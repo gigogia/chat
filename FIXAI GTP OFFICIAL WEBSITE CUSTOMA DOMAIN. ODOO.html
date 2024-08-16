@@ -1,0 +1,2491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website with Header and Footer</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            padding-bottom: 4rem; /* Space for footer */
+            position: relative;
+        }
+        #chatgpt-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      background-image: url('https://i.postimg.cc/y8KPgC07/FIXAI-GPT-1.png'); /* Add your background image here */
+            background-size: cover;
+            background-position: center;
+            backdrop-filter: blur(50px); /* Apply backdrop blur */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000; /* Ensure it is above all other content */
+      user-select: none;
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;    
+      
+    }
+    #chatgpt-popup-content {
+        background-color: #ffffff00;
+      border-radius: 0px;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      overflow-y: scroll; /* Enable vertical scrolling */
+      scrollbar-width: none; /* For Firefox */
+      -ms-overflow-style: none; /* For Internet Explorer and Edge */
+      user-select: none;
+            -webkit-user-select: none; /* Safari */
+            -moz-user-select: none;    /* Firefox */
+            -ms-user-select: none;    
+    }
+    #chatgpt-popup-content::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+    header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .5rem;
+            border-bottom: 1px solid #9b9b9b4a;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffffc5;
+            z-index: 1000;
+            animation: slideDown 2s ease-out;
+        }
+
+        /* header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid #9b9b9b4a;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #ffffffc5;
+   background-image: url('https://i.postimg.cc/9M1z1jZn/image.png'); 
+    background-image: url('https://i.postimg.cc/G27HYFnY/image.png'); 
+
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    z-index: 1000;
+    animation: slideDown 2s ease-out;
+} */
+
+        .separator {
+            width: calc(100% - 20px);
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap:4px;
+            color: #848484;
+            margin: 0 20px;
+        }
+        .separator > p {
+            word-break: keep-all;
+            display: block;
+            text-align: center;
+            font-weight:bolder;
+            font-size:9px;
+            margin: auto;
+        }
+        .separator .line {
+            display: inline-block;
+            width:50px;
+            max-width: 100%;
+            height: 1px;
+            border: 0;
+            background-color: #b3b3b3;
+            margin: auto;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        body.dark header {
+            border-color: #8a8a8ae6;
+        }
+
+        .logo-nav {
+            display: flex;
+            align-items: center;
+            -webkit-user-drag: none;
+            -ms-user-select: none;
+            user-select: none;  
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links a {
+            color: #2f2f2f;
+            text-decoration: none;
+            margin-right: 1rem;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height:2px;
+            bottom: -2px; /* Adjust as needed to position the line */
+            left: 0;
+            background-color: rgba(0, 115, 255, 0.947);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 1.5s ease-out;
+        }
+
+        .nav-links a:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+
+        body.dark .nav-links a {
+            color: #d4d4d8;
+        }
+
+        .nav-links a:hover {
+            color: #858585;
+        }
+
+        body.dark .nav-links a:hover {
+            color: #f4f4f5;
+        }
+
+        button {
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1d4ed8;
+        }
+
+        .menu-icon {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #c7c7c7;
+        }
+
+        .footer {
+            background-color: #eeeeee7b;
+            padding: 40px 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            border-top: 1px solid #dcdcdc00;
+        }
+
+        .footer-section {
+            flex: 1 1 200px;
+            margin: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            color: #8e8e8e;
+            font-weight: 600;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            text-decoration: none;
+            color: #9c9c9c;
+            font-size: 0.95em;
+        }
+
+        .footer-section ul li a:hover {
+            text-decoration: underline;
+            color: #999999;
+        }
+
+        .footer-search {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+            flex: 1 1 300px;
+        }
+
+        .footer-search input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #cccccc;
+            border-radius: 5px;
+            outline: none;
+            font-size: 1em;
+        }
+
+        .footer-search button {
+            margin-left: 10px;
+            padding: 10px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .footer-search button:hover {
+            background-color: #5555559e;
+        }
+
+        .footer-social {
+            display: flex;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .footer-social a {
+            margin: 0 10px;
+        }
+
+        .footer-social img {
+            width: 24px;
+            height: 24px;
+            filter: grayscale(100%);
+            transition: filter 0.3s;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;  
+            pointer-events: none;
+        }
+
+        .footer-social img:hover {
+            filter: none;
+        }
+
+        .menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 250px;
+            height: 100%;
+            background: #ffffff00;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+            z-index: 1001;
+        }
+
+        .menu.open {
+            transform: translateX(0);
+        }
+
+        .menu ul {
+            list-style: none;
+            padding: 1rem;
+            margin: 0;
+        }
+
+        .menu ul li {
+            margin-bottom: 1rem;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .menu ul li a:hover {
+            color: #007bff;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .menu {
+                display: block;
+            }
+        }
+
+        .meta-ai-component {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: #ffffff00;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+            margin-top: 2rem;
+        }
+
+        .meta-ai-component h2 {
+            font-size: 1.5rem;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+
+        .meta-ai-component h3 {
+            font-size: 1.25rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+
+        .meta-ai-component p {
+            color: #6c757d;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .meta-ai-component {
+                padding: 1rem;
+            }
+
+            .meta-ai-component h2 {
+                font-size: 1.25rem;
+            }
+
+            .meta-ai-component h3 {
+                font-size: 1rem;
+            }
+
+            .meta-ai-component p {
+                font-size: 0.875rem;
+            }
+        }
+        /* Base styles */
+        #container-232535 {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff00;
+  border-radius: 0.5rem;
+  align-items: center;
+  width: 100%; /* Full width */
+  max-width: 1200px; /* Maximum width */
+  margin: 0 auto; /* Center the container */
+  box-sizing: border-box; /* Include padding and border in width calculation */
+  padding: 20px 0 0 0; /* Add top padding, keep other paddings as 0 */
+}
+
+
+#container-232535 h2, 
+#container-232535 h3, 
+#container-232535 p {
+  margin: 0; /* Remove default margins for text elements */
+  padding: 0; /* Remove default padding if necessary */
+}
+
+#container-232535 h2 {
+  margin-bottom: 0.5rem; /* Adjust bottom margin as needed */
+}
+
+#container-232535 h3 {
+  margin-bottom: 0.5rem; /* Adjust bottom margin as needed */
+}
+
+#container-232535 p {
+  margin-bottom: 1rem; /* Adjust bottom margin for paragraphs */
+}
+
+
+#text-section-232535 {
+  width:80%;
+  margin-bottom: 1.5rem;
+}
+
+#main-title-232535 {
+  font-size: 3.5rem;
+  font-weight:600;
+  color: #007bff;
+}
+
+#subtitle-232535 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+#description-232535 {
+  color: rgba(195, 195, 195, 0.896);
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 5px auto;
+  text-align: justify;
+  letter-spacing: 1px;
+  padding-right: 10px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  
+}
+
+#description-2325359999 {
+  color: rgba(195, 195, 195, 0.896);
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 5px auto;
+  text-align: justify;
+  letter-spacing: 1px;
+  padding-right: 10px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  
+}
+
+#availability-232535 {
+  color: #6c757d;
+  margin-top: 0.5rem;
+}
+
+#buttons-232535 {
+  margin-top: 1.5rem;
+}
+
+#try-button-232535 {
+  background-color: #1492ff;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+#try-button-232535:hover {
+  background-color: rgba(108, 117, 125, 0.8);
+}
+
+#learn-more-button-232535 {
+  background-color: transparent;
+  border: 1px solid #007bff;
+  color: #007bff;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
+#learn-more-button-232535:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}
+/* Flex Container */
+#flex-879799 {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #ffffff00 0%, #f0f4f800 100%);
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Flex Item */
+#flex-1-879799 {
+  flex: 1;
+  margin: 0 2rem; /* Adds 2rem margin on both left and right sides */
+}
+
+
+#flex-2-879799 {
+  flex: 1;
+  margin-top: 2rem;
+}
+
+/* Headings */
+#h2-879799 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin-bottom: 0.5rem;
+}
+
+#h3-879799 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+#h4-879799 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #4a5568;
+  margin-top: 1.5rem;
+}
+
+/* Paragraphs */
+#p-1-879799, #p-2-879799, #p-3-879799, #p-4-879799, #p-5-879799 {
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+#p-1-879799 {
+  margin-top: 0.5rem;
+}
+
+#p-2-879799, #p-3-879799 {
+  margin-top: 1rem;
+}
+
+#p-4-879799 {
+  margin-top: 0.5rem;
+}
+
+/* Links */
+#a-1-879799 {
+  background-color: #3182ce;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+#a-1-879799:hover {
+  background-color: #2b6cb0;
+}
+
+#a-2-879799 {
+  color: #4a5568;
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#a-2-879799:hover {
+  color: #2b6cb0;
+}
+
+/* Buttons */
+#button-1-879799 {
+  background-color: #0099ffeb;
+  color: #ffffff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#button-1-879799:hover {
+  background-color: #f56565;
+}
+
+/* Image Styles */
+#img-1-879799, #img-2-879799, #img-3-879799, #img-4-879799 {
+  border-radius: 0.375rem;
+}
+
+#img-1-879799 {
+  border-radius: 50%;
+}
+
+#img-2-879799, #img-3-879799, #img-4-879799 {
+  width: 100px;
+  height: 100px;
+}
+
+/* Container Divs */
+#div-1-879799, #div-2-879799, #div-3-879799, #div-4-879799, #div-5-879799, #div-6-879799, #div-7-879799, #div-8-879799 {
+  border-radius: 0.375rem;
+}
+
+#div-1-879799 {
+  margin-top: 1.5rem;
+}
+
+#div-2-879799 {
+  background: #ffffff00;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#div-3-879799 {
+  display: flex;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+#div-4-879799 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+#div-5-879799, #div-6-879799, #div-7-879799, #div-8-879799 {
+  background-color: #edf2f758;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+#bg-card-68789709 {
+  background-color: #f8f9fa00; /* Example background color */
+  border-radius: 0.5rem; /* Example rounded-lg */
+  padding: 2rem; /* Example p-8 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Example shadow-lg */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#image-68789709 {
+  border-radius: 0.5rem; /* Example rounded-lg */
+  margin-bottom: 1rem; /* Example mb-4 */
+}
+
+#heading-68789709 {
+  font-size: 1.875rem; /* Example text-3xl */
+  font-weight: bold; /* Example font-bold */
+  color: #007bff; /* Example text-primary */
+  text-align: center;
+}
+
+#paragraph-68789709 {
+  margin-top: 1rem; /* Example mt-4 */
+  color: #6c757d; /* Example text-muted-foreground */
+  text-align: center;
+}
+
+#link-68789709 {
+  margin-top: 1.5rem; /* Example mt-6 */
+  display: inline-block;
+  background-color: #007bff; /* Example bg-primary */
+  color: #ffffff; /* Example text-primary-foreground */
+  padding: 0.5rem 1.5rem; /* Example py-2 px-6 */
+  border-radius: 0.5rem; /* Example rounded-lg */
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out; /* Example transition */
+}
+
+#link-68789709:hover {
+  background-color: #0056b3; /* Example hover:bg-primary/80 */
+  transform: scale(1.05); /* Example hover:scale-105 */
+}
+#bg-card-68789709 video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1; /* Ensures the video stays behind other content */
+}
+
+/* Container styling */
+#container9665678 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Card styling */
+#card9665678 {
+  background-color: #82666600;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+  padding: 2rem;
+  max-width:100%;
+  width:900px;
+  text-align: center;
+}
+
+/* Heading styling */
+#title9665678 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+#subtitle9665678 {
+  font-size: 1.25rem;
+  color: #6c757d;
+  margin-bottom: 1rem;
+}
+
+/* Paragraph styling */
+#description9665678 {
+  font-size: 1rem;
+  color: #6c757d;
+  margin-bottom: 1.5rem;
+}
+
+/* Form styling */
+#form9665678999 {
+    display: flex;
+  flex-direction: column;
+  width: 900px;
+  max-width: 100%;
+  margin-left: 20px; /* Adjust the value as needed */
+  margin-right: 20px; /* Adjust the value as needed */ 
+}
+
+/* Form styling */
+#form9665678 {
+  display: flex;
+  flex-direction: column;
+  width: 900px;
+  max-width: 100%;
+  margin-left: 20px; /* Adjust the value as needed */
+  margin-right: 20px; /* Adjust the value as needed */
+}
+
+
+#name9665678,
+#email9665678,
+#region9665678 {
+  background-color: #f3f3f37c;
+
+  border: 1px solid #e0e0e000;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+#name9665678:focus,
+#email9665678:focus {
+  background-color: #f3f3f37c;
+  outline: none;
+  border-color: #007bff00;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0);
+
+}
+
+#name9665678999,
+#email9665678999,
+#message9665678999 {
+  background-color: #f3f3f37c;
+  border: 1px solid #e0e0e000;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+#name9665678999:focus,
+#email9665678999:focus,
+#message9665678999:focus {
+  outline: none;
+  border-color: #007bff00;
+  background-color: #f3f3f37c;
+}
+
+/* Button styling */
+#submit9665678 {
+  background-color: #232323;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+/* Button styling */
+#submit9665678999 {
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Image styling */
+#image9665678 {
+  margin-top: 1.5rem;
+  border-radius: 8px;
+}
+#container12356 {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+.popup-image {
+    display: block;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE */
+    -webkit-user-drag: none;
+    filter: drop-shadow(0 0 20px rgba(65, 65, 65, 0.393));
+
+    /* Animation properties */
+    /* animation: fadeInOut .0000002s infinite; */
+}
+.popup-image890 {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE */
+    -webkit-user-drag: none;
+
+    /* Animation properties */
+    /* animation: fadeInOut .0000002s infinite; */
+}
+.popup-image1234 {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    user-select: none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE */
+    -webkit-user-drag: none;
+
+    /* Animation properties */
+    /* animation: fadeInOut .0000002s infinite; */
+}
+/* Keyframe animation definition */
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+        .center-text {
+    text-align: center;
+    color: rgb(90, 90, 90);
+    font-size: 2em; /* Adjust size as needed */
+    font-weight: bold; /* Make text bold */
+    margin: 20px; /* Add margin for spacing */
+    padding: 10px; /* Add padding for spacing */
+}
+#formcontainer1234 {
+    width:900px; /* Ensures full width of the viewport */
+    max-width:100%; /* Limits the maximum width */
+    margin: 0 auto; /* Centers the container horizontally */
+    padding: 0 20px; /* Adds padding inside the container to prevent content from touching edges */
+    box-sizing: border-box; /* Includes padding and border in the element's total width and height */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+}
+#description-container {
+            text-align: center;
+            padding: 20px;
+            color: black;
+            font-weight: bolder;
+        }
+
+        /* Default font size for mobile */
+        #description-container {
+            font-size: 10px;
+        }
+
+        /* Font size for tablets */
+        @media (min-width: 600px) and (max-width: 1024px) {
+            #description-container {
+                font-size: 14px;
+            }
+        }
+
+        /* Font size for desktops */
+        @media (min-width: 1024px) {
+            #description-container {
+                font-size: 18px;
+            }
+        }
+        #popup9 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it is above all other content */
+  overflow: hidden; /* Hide the scrollbars */
+  cursor: default;
+}
+
+        #popup9-content::-webkit-scrollbar  {
+    display: none;
+  }
+  .btn {
+    border: none;
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(145deg, #ffffff, #ffffff, rgb(255, 255, 255));
+    box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0),
+                inset 0px -4px 0px 0px rgba(140, 140, 140, 0),
+                0px 0px 0px 4px rgba(255, 255, 255, 0);
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    outline: none;
+    animation: glowing 1.5s infinite alternate; /* Apply the glowing animation */
+    border: 1px rgb(152, 152, 152);
+}
+
+@keyframes glowing {
+    from {
+        box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0); /* Initial shadow */
+    }
+    to {
+        box-shadow: 0 0 30px 20px rgba(255, 255, 255, 0); /* Final shadow with increased size */
+    }
+}
+
+    /* .btn.icon {
+      filter: brightness(0) invert(1);
+      transform: scale(1.2);
+    } */
+    .icon {
+      width: 2.5em;
+      height: 2.5em;
+      transition: all 800ms ease;
+    }
+    
+    .btn:hover {
+      background: linear-gradient(145deg, #ffffff, #ffffff);
+      box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0),
+                  inset 0px -4px 0px 0px rgba(255, 255, 255, 0.2),
+                  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                  0px 0px 180px 0px #ffffff;
+      transform: translateY(-2px);
+    }
+    
+    .btn:active {
+      background: linear-gradient(145deg, #a9a9a9, #a9a9a9);
+      box-shadow: inset 0px 1px 0px 0px rgba(255, 255, 255, 0.4),
+                  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                  0px 0px 0px 4px rgba(255, 255, 255, 0.2),
+                  0px 0px 60px 0px #adadad;
+    }
+    
+    .btn.active {
+      background: linear-gradient(145deg, #979797, #f0f0f0);
+      box-shadow: inset 0px 1px 0px 0px rgba(0, 0, 0, 0.422),
+                  inset 0px -4px 0px 0px rgba(0, 0, 0, 0.2),
+                  0px 0px 0px 4px rgba(0, 0, 0, 0.281),
+                  /* 0px 0px 180px 0px #34e89e, */
+                  
+                  0px 0px 20px 5px rgba(0, 0, 0, 0.489); /* White glowing effect */
+    }
+    
+    @keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.btn.active .icon {
+  filter: brightness(0) invert(1);
+  animation: pulseAnimation 0.5s infinite alternate;
+}
+
+    .btn.active ~ .circle-outline {
+      /* animation: pulse 3s infinite; */
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 50%;
+      border:1px solid rgba(53, 53, 53, 0.493);
+    }
+    
+    .circle-outline {
+      box-shadow: 0 0 30px 20px rgba(78, 78, 78, 0); /* Final shadow with increased size */
+      width: 10em;
+      height: 10em;
+      border: 2px solid #4f4f4f41;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(45, 45, 45, 0);
+
+        
+      }
+      70% {
+        box-shadow: 0 0 0 50px rgba(80, 80, 80, 0.193);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(72, 72, 72, 0.063);
+      }
+    }
+    .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    color: #6d6d6d;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 999; /* Ensure the button is above other elements */
+}
+.close-button:hover{
+    background-color: white;
+    border: none;
+}
+.container576766 {
+    width:1200;
+    max-width:100%;
+    background-color: #ffffffbd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0);
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto; /* Center horizontally */
+    min-height: 600px; /* Ensure container grows with content */
+    max-height: 100%;
+    overflow: auto; /* Add scrollbar if content overflows */
+}
+
+.section576766 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icon-link576766 {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon576766 {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+}
+
+.text576766 {
+    flex: 1;
+}
+
+.heading576766 {
+    font-size: 18px;
+    margin: 0;
+    color: #333;
+}
+
+.paragraph576766 {
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: #666;
+}
+.container-4368437 {
+    width: 900px;
+    max-width: 100%;
+    background-color: #ffffff00;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+/* Sub-container styles */
+.sub-container-4368437 {
+    border: 1px solid #848484;
+    border-radius: 0px;
+    padding: 0; /* Remove padding to ensure image covers the entire area */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /* Ensures that content doesn't overflow */
+    height: 200px; /* Fixed height for consistency */
+    width: 100%; /* Changed from fixed 450px to 100% for better responsiveness */
+}
+
+/* Image styles */
+.sub-container-4368437 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the container while preserving aspect ratio */
+    position: absolute; /* Allows the image to cover the entire container */
+    top: 0;
+    left: 0;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container-4368437 {
+        width: calc(100% - 2px); /* Reduce the width to fit within the viewport, accounting for padding/margin */
+        padding:1px; /* Adjust padding to reduce excess space */
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .sub-container-4368437 {
+        height: 150px; /* Adjust height for smaller screens */
+        width:100%;
+    }
+}
+/* https://i.postimg.cc/4dWSd5Dg/image-removebg-preview-1.png fixai gpt black logo official */
+/* https://i.postimg.cc/qgfnhs2w/image-removebg-preview-19.png white logo fixai gpt */
+/* https://dlab.epfl.ch/wikispeedia/wpcd/images/249/24968.png indain flag logo */
+    </style>
+</head>
+<body>
+    <div id="chatgpt-popup">
+        <div id="chatgpt-popup-content">
+    <header style="background-color: #ffffff87;">
+        <div class="logo-nav">
+            &nbsp;
+            &nbsp;
+            &nbsp;
+            <img src="https://i.postimg.cc/4dWSd5Dg/image-removebg-preview-1.png"
+            
+                alt="FIXAI GPT LOGO"
+                style="height: 2rem; width: auto; display: block; margin: 0 auto;"
+                loading="lazy"
+                title="FIXAI GPT"
+                aria-label="FIXAI GPT LOGO" 
+                role="img">
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;
+                &nbsp;            &nbsp;
+                &nbsp;
+
+            <nav class="nav-links">
+                <!-- <a href="https://fixaigpt.odoo.com" title="Our Approach">Our Approach</a>
+                &nbsp;
+
+                <a href="https://fixaigpt.odoo.com" title="Research">Research</a>
+                &nbsp;
+
+                <a href="https://fixaigpt.odoo.com" title="AI Models">Models</a>
+                &nbsp;
+
+                <a href="https://fixaigpt.odoo.com" title="Commands">Commands</a>
+                &nbsp;
+
+                <a href="https://fixaigpt.odoo.com" title="Blog">Blog</a>
+                &nbsp;
+
+                <a href="https://fixaigpt.odoo.com"title="Contact">Contact</a>
+                &nbsp; -->
+
+            </nav>
+       
+            
+        </div>
+        <!-- <div class="menu-icon" onclick="toggleMenu()">&#9776;</div> -->
+        <center> <div class="separator">
+            <hr class="line">
+            <p style="font-weight: bolder; color: #474747;font-size:9px;">ARTIFICIAL GENERAL INTELLIGENCE</p>
+            <hr class="line">
+          </div>  </center>
+    </header>
+    <br>
+    <br>
+     <br>
+        <br>
+        <br>
+    <main> 
+    <br>
+    <br>
+    <div id="container-232535" >
+      <img src="https://i.postimg.cc/2jJyfFZv/image-removebg-preview-4.png" alt="FIXAI GPT Image" class="popup-image">
+      <!-- pakistan 14 august https://i.postimg.cc/2yf8wtfP/image-removebg-preview-28.png -->
+       <!-- indian 15 august https://i.postimg.cc/4x6zq1Ft/image-removebg-preview-21.png -->
+        <!-- fixai ai gpt image https://i.postimg.cc/2jJyfFZv/image-removebg-preview-4.png -->
+      <br>
+      <!-- <center> <h1 class="center-text" style="
+        background: linear-gradient(to right, orange 50%, green 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        display: inline-block;
+        margin: 0;
+        font-weight: bolder;
+        font-size: 35px;
+    ">
+    HAPPY INDEPENDENCE DAY 15 AUGUST 1947</h1></center>
+      <br> -->
+      <!-- <center> <h1 class="center-text" style="
+        background: linear-gradient(to right, rgb(153, 153, 153) 50%, green 50%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-align: center;
+        display: inline-block;
+        margin: 0;
+        font-weight: bolder;
+        font-size: 35px;
+    ">
+    HAPPY INDEPENDENCE DAY 14 AUGUST 1947</h1></center>
+      <br>
+      <center> <h1 class="center-text" style="
+        text-align: center;
+        display: inline-block;
+        margin: 0;
+        font-weight: bolder;
+        font-size: 18px;
+    ">
+    These changes disappear on 20 august 2024</h1></center>
+      <br> -->
+      <div id="description-container"></div>
+<br>
+      <div id="text-section-232535" >
+        <p id="description-232535">Artificial General Intelligence (AGI) refers to a type of artificial intelligence that aims to possess the broad cognitive abilities of a human being. Unlike specialized AI systems that are designed to perform specific tasks, AGI can understand, learn, and apply knowledge across a wide range of subjects and activities.</p>
+<br>
+<CENTER><img src="https://i.postimg.cc/dtWGbQbD/FIXAI-GPT-1.gif" alt="FIXAI GPT Image" class="popup-image890"></CENTER>
+
+<br>
+</div>
+    <script>
+        // Define the 20 three-word statements
+        const statements = [
+            "Explore AGI potential.",
+            "Uncover AI capabilities.",
+            "Discover intelligent innovation.",
+            "Expand AI horizons.",
+            "Harness AI power.",
+            "Innovate with intelligence.",
+            "Unleash AI potential.",
+            "Revolutionize tech thinking.",
+            "Transform with AI.",
+            "AI drives progress.",
+            "AI enables discovery.",
+            "Pioneer new AI paths.",
+            "AI fuels creativity.",
+            "AI advances knowledge.",
+            "Elevate with AI.",
+            "AI empowers solutions.",
+            "AI enhances understanding.",
+            "Breakthroughs through AI.",
+            "AI redefines possibilities.",
+            "AI transforms industries."
+        ];
+
+        let currentIndex = 0;
+
+        function showStatement() {
+            const container = document.getElementById('description-container');
+            container.textContent = statements[currentIndex];
+            currentIndex = (currentIndex + 1) % statements.length;
+        }
+
+        // Show the first statement immediately
+        showStatement();
+
+        // Change statement every 2 seconds
+        setInterval(showStatement, 2000);
+    </script>  
+
+      <img src="https://i.postimg.cc/vTJ2jML0/image-removebg-preview-12.png" alt="FIXAI GPT Image" class="popup-image1234">
+
+      <div id="text-section-232535" >
+            <br>
+            <p id="description-232535"> Artificial Intelligence (AI) is revolutionizing industries and daily life by leveraging sophisticated algorithms and vast amounts of data to perform complex tasks with unprecedented efficiency. At its core, AI mimics human cognitive processes, such as learning, reasoning, and problem-solving, enabling machines to perform functions that traditionally required human intelligence. This capability allows AI to process and analyze large datasets rapidly, uncovering insights and patterns that might elude human analysts. As a result, AI enhances decision-making and operational efficiency across various fields, from autonomous vehicles navigating city streets to advanced medical diagnostics predicting patient outcomes.</p>
+            <div class="container-4368437">
+                <!-- Sub-container 1 -->
+                <div id="sub-container-1-4368437" class="sub-container-4368437">
+                    <img src="https://i.postimg.cc/xTTJkLms/avery-davis.png" alt="Background Image 1">
+                </div>
+        
+                <!-- Sub-container 2 -->
+                <div id="sub-container-2-4368437" class="sub-container-4368437">
+                    <img src="https://i.postimg.cc/4dd1ZnGy/avery-davis-1.png" alt="Background Image 2">
+                </div>
+        
+                <!-- Sub-container 3 -->
+                <div id="sub-container-3-4368437" class="sub-container-4368437">
+                    <img src="https://i.postimg.cc/KvSxKMH6/avery-davis-2.png" alt="Background Image 3">
+                </div>
+        
+                <!-- Sub-container 4 -->
+                <div id="sub-container-4-4368437" class="sub-container-4368437">
+                    <img src="https://i.postimg.cc/fRddcmzY/avery-davis-3.png" alt="Background Image 4">
+                </div>
+            </div>
+
+              <p id="description-232535"> The power of AI extends beyond mere data analysis. It encompasses the ability to adapt and improve through machine learning, where algorithms refine their performance based on experience and new data. This adaptability means that AI systems can continually evolve, becoming more accurate and effective over time. For instance, AI-driven recommendation engines in e-commerce platforms personalize shopping experiences by suggesting products based on individual preferences and browsing history. Similarly, in the financial sector, AI algorithms detect fraudulent transactions and assess risk with greater precision than traditional methods.</p>
+              
+                <p id="description-232535">  AI's impact is also profound in the realm of automation. By automating routine and repetitive tasks, AI frees up human resources for more strategic and creative endeavors. This shift not only increases productivity but also fosters innovation, as businesses can focus on developing new products and services rather than managing mundane tasks. In healthcare, AI-powered tools assist in diagnosing diseases, analyzing medical images, and even predicting patient outcomes, leading to more timely and accurate treatments.</p>
+              
+                  <p id="description-232535"> Moreover, AI is driving significant advancements in natural language processing, enabling machines to understand and generate human language with remarkable accuracy. This progress enhances human-computer interaction, making it possible for virtual assistants to engage in meaningful conversations, translate languages in real-time, and provide personalized responses to user queries.</p>
+              
+                    <p id="description-232535"> As AI continues to evolve, it raises important ethical and societal considerations. Ensuring transparency, accountability, and fairness in AI systems is crucial to address potential biases and ensure that the benefits of AI are distributed equitably. By addressing these challenges, society can harness the full potential of AI to drive positive change, improve quality of life, and address some of the world's most pressing issues. In essence, the power of AI lies not only in its technological capabilities but also in its potential to transform industries and enhance human experiences in profound and meaningful ways.</p>
+          
+
+        <BR>
+
+
+            <!-- <center><h1 class="center-text">FIXAI GPT</h1></center> -->
+            <!-- <CENTER><img src="https://i.postimg.cc/FF8hJrZL/FIXAI-GPT.gif" alt="FIXAI GPT Image" class="popup-image890"></CENTER> -->
+<br>
+
+            <!-- <center> -->
+
+                <div class="container576766">
+                    <div class="section576766">
+                        <a href="https://whatsapp.com/channel/0029VagiDRxAzNc3k7Y8gX0Q" class="icon-link576766">
+                            <div class="icon576766" style="background-image: url('https://cdn-icons-png.flaticon.com/128/4423/4423697.png');"></div>
+                        </a>
+                        <a  href="https://whatsapp.com/channel/0029VagiDRxAzNc3k7Y8gX0Q"   class="text576766">
+                            <h2 class="heading576766">JOIN US ON WHATSAPP META</h2>
+                            <p class="paragraph576766">Stay connected and be the first to receive the latest updates from FIXAI GPT by joining our WhatsApp channel. Get exclusive insights, announcements, and interact directly with our team. Click here to join us on WhatsApp and become part of our AI community!</p>
+                        </a>
+                    </div>
+                    <div class="section576766">
+                        <a href="https://www.facebook.com/profile.php?id=61561195895298&mibextid=ZbWKwL" class="icon-link576766">
+                            <div class="icon576766" style="background-image: url('https://cdn-icons-png.flaticon.com/128/5968/5968764.png');"></div>
+                        </a>
+                        <a  href="https://www.facebook.com/profile.php?id=61561195895298&mibextid=ZbWKwL" class="text576766">
+                            <h2 class="heading576766">JOIN US ON FACEBOOK META</h2>
+                            <p class="paragraph576766">Follow FIXAI GPT on Facebook to stay updated on our latest developments, news, and events. Engage with our posts, join discussions, and connect with other AI enthusiasts. Like our page here and be part of the FIXAI GPT community on Facebook!</p>
+                        <a>
+                    </div>
+                    <div class="section576766">
+                        <a href="https://x.com/@fixai_gpt" class="icon-link576766">
+                            <div class="icon576766" style="background-image: url('https://cdn-icons-png.flaticon.com/128/5968/5968958.png');"></div>
+                        </a>
+                        <a  href="https://x.com/@fixai_gpt"  class="text576766">
+                            <h2 class="heading576766">JOIN US ON TWITTER</h2>
+                            <p class="paragraph576766">Keep up with real-time updates and insights from FIXAI GPT by following us on Twitter. Get the latest news, participate in conversations, and join the global dialogue on AI. Follow us here and stay in the loop with FIXAI GPT!</p>
+                        </a>
+                    </div>
+                    <div class="section576766">
+                        <a href="https://www.linkedin.com/in/fixai-gpt-artficial-general-intelligence-627124323/" class="icon-link576766">
+                            <div class="icon576766" style="background-image: url('https://cdn-icons-png.flaticon.com/128/4494/4494497.png');"></div>
+                        </a>
+                        <a  href="https://www.linkedin.com/in/fixai-gpt-artficial-general-intelligence-627124323/"  class="text576766">
+                            <h2 class="heading576766">JOIN US ON LINKED IN</h2>
+                            <p class="paragraph576766">Connect with FIXAI GPT on LinkedIn for professional updates, industry insights, and networking opportunities. Follow our page here to stay informed about our advancements and connect with like-minded professionals in the AI field.</p>
+                        </a>
+                    </div>
+                    <!-- Added Sections -->
+                    <div class="section576766">
+                        <a href="https://www.instagram.com/fixai_gpt" class="icon-link576766">
+                            <div class="icon576766" style="background-image: url('https://cdn-icons-png.flaticon.com/128/3955/3955024.png');"></div>
+                        </a>
+                        <a  href="https://www.instagram.com/fixai_gpt"  class="text576766">
+                            <h2 class="heading576766">JOIN US ON INSTAGRAM META</h2>
+                            <p class="paragraph576766">Discover the visual side of FIXAI GPT by following us on Instagram. Explore our latest updates, behind-the-scenes content, and engaging visuals related to AI and technology. Follow us here and be inspired by FIXAI GPT’s journey!</p>
+                        </a>
+                    </div>
+                    <div class="section576766">
+                        <a href="https://github.com/fixaigpt/FIXAI-GPT" class="icon-link576766">
+                            <div class="icon576766" style="background-image: url('https://cdn-icons-png.flaticon.com/128/16021/16021236.png');"></div>
+                        </a>
+                        <a  href="https://github.com/fixaigpt/FIXAI-GPT"  class="text576766">
+                            <h2 class="heading576766">JOIN US ON GITHUB</h2>
+                            <p class="paragraph576766">Join FIXAI GPT on GitHub to access our open-source projects, collaborate on AI development, and contribute to our community. Explore our repositories and stay updated with our latest code releases. Check out our GitHub page here and start collaborating with us!</p>
+                        </a>
+                    </div>
+                </div>
+                
+            <!-- </center> -->
+            <center>
+                <img src="https://i.postimg.cc/XJvvfgkp/image-removebg-preview-11.png" alt="FIXAI GPT Image" class="popup-image">
+
+            </center>
+            <center><h1 class="center-text">VOICE ASSISTANT</h1></center>
+            <center><h1 style="font-size: 13px;" class="center-text">dear user you just click on this button to chat with fixai gpt voice assistant that comming soon with its actual face in 2025</h1></center>
+
+            <CENTER>
+                <button  id="a9" style="
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #171717;
+    padding: 1em 2em;
+    border: none;
+    border-radius: .6rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    outline: none;
+">
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-3.3em, -4em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-6em, 1.3em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-.2em, 1.8em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(3.5em, 1.4em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(3.5em, -3.8em);
+        height:50px;
+        width: 50px;
+        background-color: #797979;
+        border-radius: 50%;
+        transition: .8s ease;
+        color:black;
+    "></span>
+    <span style="
+        position: relative;
+    ">SPEAK NOW ↗</span>
+</button>
+<script>
+    document.querySelector('button').addEventListener('mouseover', function() {
+        const spans = this.querySelectorAll('span:not(:nth-child(6))');
+        spans.forEach(span => {
+            span.style.transform = 'translate(-50%, -50%) scale(4)';
+            span.style.transition = '1.5s ease';
+        });
+    });
+</script>
+
+            </CENTER>
+
+            <center><h1 class="center-text">WE WILL COMING BACK HERE IN 2025</h1></center>
+            <br>
+           
+<center>
+    <center><h2 id="title9665678">GET UPDATES NOW</h2>
+    <p>STAY TUNED</p></center>
+
+
+  <div id="formcontainer1234">
+    <p id="description-232535" style="color: rgba(0, 0, 0, 0.667);"> submit your details here and get tuned with lates updates by fixai gpt</p>
+    <form id="form9665678" action="https://api.web3forms.com/submit" method="post">
+  <input type="hidden" name="access_key" value="b3d05499-a028-49d9-ac76-0852c2ca577b">
+  <input type="hidden" id="devicename" name="devicename" value="">
+  <input type="hidden" id="devicetype" name="devicetype" value="">
+  <input type="text" name="name" id="name9665678" placeholder="Name" required />
+  <input type="email" name="email" id="email9665678" placeholder="Email" required />
+  <input type="text" id="region9665678" name="region" placeholder="Enter your region">
+  <!-- <button type="submit" id="submit9665678">SUBMIT</button> -->
+  <button  id="submit9665678" style="
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #171717;
+    padding: 1em 2em;
+    border: none;
+    border-radius: .6rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    outline: none;
+">
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-3.3em, -4em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-6em, 1.3em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-.2em, 1.8em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(3.5em, 1.4em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(3.5em, -3.8em);
+        height:50px;
+        width: 50px;
+        background-color: #0040ff;
+        border-radius: 50%;
+        transition: .8s ease;
+        color:black;
+    "></span>
+    <span style="
+        position: relative;
+    ">SUBMIT ↗</span>
+</button>
+</form>
+</div>
+</center>        
+         
+        <script>
+            const form9665678 = document.getElementById('form9665678');
+            const submitButton9665678 = document.getElementById('submit9665678');
+            
+            form9665678.addEventListener('submit', function(e) {
+              e.preventDefault();
+              const formData = new FormData(form9665678);
+              const object = Object.fromEntries(formData);
+              const json = JSON.stringify(object);
+            
+              // Show a loading message
+              submitButton9665678.innerHTML = "Submitting...";
+            
+              fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: json
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            submitButton9665678.innerHTML = "Submitted Successfully";
+                        } else {
+                            console.log(response);
+                            submitButton9665678.innerHTML = "Error: " + json.message;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        submitButton9665678.innerHTML = "Something went wrong!";
+                    })
+                    .finally(function() {
+                        form9665678.reset();
+                        setTimeout(() => {
+                            submitButton9665678.innerHTML = "SUBMIT";
+                        }, 3000);
+                    });
+            });
+            </script>
+            
+        <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                // Get browser details using Bowser
+                const browser = bowser.getParser(window.navigator.userAgent);
+                const browserDetails = browser.getBrowser();
+                const platform = browser.getPlatform();
+                const os = browser.getOS();
+                const engine = browser.getEngine();
+        
+                // Format the browser details
+                const browserInfo = `Browser Name: ${browserDetails.name}, Browser Version: ${browserDetails.version}, Platform: ${platform.type}, OS: ${os.name} ${os.versionName || os.version}, Engine: ${engine.name} ${engine.version}`;
+        
+                // Store the browser details in the hidden input field
+                document.getElementById('browserdetails').value = browserInfo;
+            });
+        </script>
+
+        <br>
+        <p id="description-232535">Artificial Intelligence (AI) has emerged as a transformative technology, revolutionizing a multitude of industries and reshaping our interactions with technology. AI systems excel at processing vast amounts of data at remarkable speeds, extracting valuable insights and making decisions with a level of precision that far surpasses human capability. This efficiency is particularly evident in areas such as healthcare, where AI algorithms can analyze medical images to detect diseases early or predict patient outcomes with high accuracy. In finance, AI systems are employed to detect fraudulent transactions and manage risk, offering a level of security and efficiency that is crucial for modern financial operations.</p>
+
+        <p id="description-232535">One of the most significant advancements in AI has been the development of large language models like GPT (Generative Pre-trained Transformer), particularly with contributions from FixAI. GPT models are designed to understand and generate human-like text, facilitating natural language interactions between machines and humans. FixAI has played a pivotal role in advancing these models by enhancing their ability to understand context, generate coherent and contextually relevant responses, and improve overall language comprehension.</p>
+
+        <p id="description-232535">FixAI's contributions have significantly impacted the development of AI by:</p>
+
+        <p id="description-232535">1. **Improving Model Accuracy:** FixAI's research has led to more accurate language models that better understand and respond to nuanced language, making AI interactions more natural and effective.</p>
+
+        <p id="description-232535">2. **Enhancing Contextual Understanding:** Through advanced techniques, FixAI has improved how AI systems grasp and maintain context over longer conversations, allowing for more meaningful and coherent exchanges with users.</p>
+
+        <p id="description-232535">3. **Expanding Language Capabilities:** FixAI has been instrumental in broadening the linguistic capabilities of AI models, enabling them to support a wider range of languages and dialects, thus making AI more accessible and versatile.</p>
+
+        <p id="description-232535">4. **Optimizing Training Processes:** By refining training methodologies and data handling, FixAI has contributed to more efficient model training, reducing the computational resources required and accelerating the development cycle.</p>
+
+        <p id="description-232535">5. **Advancing Ethical AI:** FixAI is also focused on addressing ethical considerations, such as bias and fairness in AI systems, ensuring that advancements in AI technology are aligned with societal values and promote equitable outcomes.</p>
+
+        <p id="description-232535">The development of AI is not just about technological advancements but also about how these technologies can be applied to solve real-world problems. FixAI's contributions to GPT models are a testament to the potential of AI to revolutionize communication, enhance productivity, and drive innovation across various sectors. As AI continues to evolve, the ongoing efforts of organizations like FixAI will be crucial in shaping the future of artificial intelligence, ensuring that it remains a powerful tool for positive change and advancement.</p>
+        <!-- <script>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                // Get browser details using Bowser
+                const browser = bowser.getParser(window.navigator.userAgent);
+                const browserDetails = browser.getBrowser();
+                const platform = browser.getPlatform();
+                const os = browser.getOS();
+                const engine = browser.getEngine();
+        
+                // Format the browser details
+                const browserInfo = `Browser Name: ${browserDetails.name}, Browser Version: ${browserDetails.version}, Platform: ${platform.type}, OS: ${os.name} ${os.versionName || os.version}, Engine: ${engine.name} ${engine.version}`;
+        
+                // Store the browser details in the hidden input field
+                document.getElementById('browserdetails123').value = browserInfo;
+            });
+        </script> -->
+          <!-- <p id="link9665678">
+            <a href=".com">www.graphicsfamily.com</a>
+          </p> -->
+              <center><h2 id="title9665678">DELIVER YOUR IDEAS</h2>
+                <h3 id="subtitle9665678">This form directly submited to the owner of fixai gpt</h3>
+                <p id="description9665678">
+                  we are the team of passionate developers
+                </p></center>
+              <div id="formcontainer1234">
+
+              <form id="form9665678999" action="https://api.web3forms.com/submit" method="post">
+                <input type="hidden" name="access_key" value="b3d05499-a028-49d9-ac76-0852c2ca577b">
+                <input type="text" name="name" id="name9665678999" placeholder="Name" required />
+                <input type="email" name="email" id="email9665678999" placeholder="Email" required />
+                <input type="text" id="message9665678999" name="message" placeholder="Enter your ideas here">
+                <!-- <button type="submit" id="submit9665678999">SUBMIT</button> -->
+                <button id="submit9665678999"style="
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #171717;
+    padding: 1em 2em;
+    border: none;
+    border-radius: .6rem;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    display: inline-block;
+    text-align: center;
+    outline: none;
+">
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-3.3em, -4em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-6em, 1.3em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-.2em, 1.8em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(3.5em, 1.4em);
+        height: 30px;
+        width: 30px;
+        background-color: #0c66ed;
+        border-radius: 50%;
+        transition: .6s ease;
+    "></span>
+    <span style="
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(3.5em, -3.8em);
+        height:50px;
+        width: 50px;
+        background-color: #0040ff;
+        border-radius: 50%;
+        transition: .8s ease;
+        color:black;
+    "></span>
+    <span style="
+        position: relative;
+    ">SUBMIT ↗</span>
+            </form>
+            </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const form = document.getElementById('form9665678999');
+                const submitButton = document.getElementById('submit9665678999');
+        
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const formData = new FormData(form);
+                    const object = Object.fromEntries(formData);
+                    const json = JSON.stringify(object);
+        
+                    // Change button text to indicate submission
+                    submitButton.innerHTML = "Submitting...";
+        
+                    fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: json
+                    })
+                    .then(async (response) => {
+                        let json = await response.json();
+                        if (response.status == 200) {
+                            submitButton.innerHTML = "Submitted Successfully";
+                        } else {
+                            console.log(response);
+                            submitButton.innerHTML = "Error: " + json.message;
+                        }
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        submitButton.innerHTML = "Something went wrong!";
+                    })
+                    .finally(function() {
+                        form.reset();
+                        setTimeout(() => {
+                            submitButton.innerHTML = "SUBMIT";
+                        }, 3000);
+                    });
+                });
+            });
+        </script>
+        <script>
+            // Function to detect device type
+            function detectDeviceType() {
+                const userAgent = navigator.userAgent;
+                if (/Mobile|Android|iP(hone|od)|Windows Phone/i.test(userAgent)) {
+                    return "Mobile";
+                } else if (/iPad|Android|Tablet/i.test(userAgent)) {
+                    return "Tablet";
+                } else if (/Macintosh|Windows|Linux/i.test(userAgent)) {
+                    return "Computer";
+                } else {
+                    return "Unknown";
+                }
+            }
+        
+            // Function to detect device name and model
+            function detectDeviceName() {
+                const userAgent = navigator.userAgent;
+                if (/iPhone/.test(userAgent)) {
+                    return "iPhone";
+                } else if (/iPad/.test(userAgent)) {
+                    return "iPad";
+                } else if (/Android/.test(userAgent)) {
+                    return "Android Device";
+                } else if (/Windows/.test(userAgent)) {
+                    return "Windows Device";
+                } else if (/Macintosh/.test(userAgent)) {
+                    return "Mac Device";
+                } else {
+                    return "Unknown Device";
+                }
+            }
+        
+            // Function to set device info
+            function setDeviceInfo() {
+                document.getElementById('devicename').value = detectDeviceName() + ' 67878';
+                document.getElementById('devicetype').value = detectDeviceType() + ' 67878';
+            }
+        
+            // Execute script as soon as the DOM is loaded
+            document.addEventListener("DOMContentLoaded", function() {
+                setDeviceInfo();
+            });
+        </script>
+      
+
+<!-- <div id="bg-card-68789709" class="bg-card rounded-lg p-8 shadow-lg flex flex-col items-center relative">
+
+        <img id="image-68789709" aria-hidden="true" alt="Llama 3.1 AI Model" src="https://cdn-icons-png.flaticon.com/128/17375/17375746.png" class="rounded-lg mb-4" />
+    <h1 id="heading-68789709" class="text-3xl font-bold text-primary text-center">Build the future of AI with Llama 3.1, now with 405B</h1>
+    <p id="paragraph-68789709" class="mt-4 text-muted-foreground text-center">
+      The latest release of Llama 3.1 includes enhanced reasoning and coding capabilities, multilingual support, an all-new reference system and instruction-tuned versions in 8B, 70B and 405B – the
+      largest open model available.
+    </p>
+    <a id="link-68789709" href="#" class="mt-6 inline-block bg-primary text-primary-foreground py-2 px-6 rounded-lg transition duration-300 ease-in-out transform hover:bg-primary/80 hover:scale-105">Learn more</a>
+  </div>
+<br>  
+      <br>
+      <div class="flex flex-col lg:flex-row bg-card p-6 rounded-lg shadow-lg" id="flex-879799">
+        <div class="flex-1 lg:mr-6" id="flex-1-879799">
+          <h2 class="text-2xl font-bold text-foreground" id="h2-879799">AI Studio</h2>
+          <p class="text-muted-foreground mt-2" id="p-1-879799">Create and discover AIs</p>
+          <p class="text-muted-foreground mt-4" id="p-2-879799">
+            With AI Studio, you can create your own AI character based on your interests or discover AIs made by others—and creators can build an AI extension of themselves.
+          </p>
+          <p class="text-muted-foreground mt-2" id="p-3-879799">AI Studio is available in the US only.</p>
+          <div class="mt-4" id="div-1-879799">
+            <a href="#" class="bg-primary text-primary-foreground px-4 py-2 rounded-lg hover:bg-primary/80" id="a-1-879799">Explore AI Studio</a>
+            <a href="#" class="text-muted-foreground ml-4" id="a-2-879799">Learn more →</a>
+          </div>
+        </div>
+        <div class="flex-1 mt-6 lg:mt-0" id="flex-2-879799">
+          <div class="bg-white rounded-lg shadow-md p-4" id="div-2-879799">
+            <h3 class="text-lg font-semibold" id="h3-879799">Browse ideas</h3>
+            <div class="flex items-center mt-4" id="div-3-879799">
+              <img src="https://placehold.co/50x50" alt="User Avatar" class="rounded-full mr-2" id="img-1-879799" />
+              <span class="text-lg" id="span-1-879799">Create an AI based on you</span>
+            </div>
+            <p class="text-muted-foreground mt-2" id="p-4-879799">Engage more fans with an AI that sounds like you, based on your content and information.</p>
+            <button class="bg-secondary text-secondary-foreground mt-4 px-4 py-2 rounded-lg" id="button-1-879799">Try it</button>
+            <h4 class="text-md font-semibold mt-6" id="h4-879799">Create an AI character</h4>
+            <p class="text-muted-foreground" id="p-5-879799">Select an idea to get started or build a totally new custom AI character.</p>
+            <div class="grid grid-cols-2 gap-4 mt-4" id="div-4-879799">
+              <div class="bg-zinc-200 rounded-lg p-2 flex items-center justify-center" id="div-5-879799">
+                <span class="text-muted-foreground" id="span-2-879799">+</span>
+              </div>
+              <div class="bg-zinc-200 rounded-lg p-2 flex items-center justify-center" id="div-6-879799">
+                <img src="https://placehold.co/100x100" alt="AI Character" class="rounded-lg" id="img-2-879799" />
+              </div>
+              <div class="bg-zinc-200 rounded-lg p-2 flex items-center justify-center" id="div-7-879799">
+                <img src="https://placehold.co/100x100" alt="AI Character" class="rounded-lg" id="img-3-879799" />
+              </div>
+              <div class="bg-zinc-200 rounded-lg p-2 flex items-center justify-center" id="div-8-879799">
+                <img src="https://placehold.co/100x100" alt="AI Character" class="rounded-lg" id="img-4-879799" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       -->
+      <!-- <center><h1 style="color: WHITE;">WE WILL COMING BACK HERE IN 2025</h1></center> -->
+    </main>
+<br>
+<br>
+<br>
+<div id="popup9" class="popup">
+    <button class="close-button" id="closepopup9">X</button>
+
+      <div class="container">
+<center>  <button id="voiceBtn" class="btn">
+    <img src="https://cdn-icons-png.flaticon.com/128/7422/7422028.png" alt="Microphone Icon" class="icon">
+</button></center>
+         
+          <div class="circle-outline"></div>
+  </div>
+</div> 
+    <footer class="footer">
+        <div class="footer-section">
+            <h3>About</h3>
+            <ul>
+                <li><a href="https://fixaigpt.odoo.com">Our Story</a></li>
+                <li><a href="https://fixaigpt.odoo.com">Mission</a></li>
+                <li><a href="https://fixaigpt.odoo.com">Vision</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="https://policies.google.com/privacy?hl=en-US#:~:text=We%20review%20our%20information%20collection,in%20order%20to%20process%20it.">Privacy Policy</a></li>
+                <li><a href="https://policies.google.com/terms/archive/19990920?hl=en#:~:text=You%20understand%20and%20expressly%20agree,system%20or%20loss%20of%20data">Terms of Service</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Contact Us</h3>
+            <ul>
+                <li><a href="mailto:info.fixaigpt@gmail.com">info.fixaigpt@gmail.com</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/United_States">Unites States Of America</a></li>
+            </ul>
+        </div>
+        <div class="footer-search">
+            <input type="text" placeholder="Search...">
+            <button>Search</button>
+        </div>
+        <div class="footer-social">
+            <a href="#" aria-label="Facebook">
+                <img src="https://cdn-icons-png.flaticon.com/128/2168/2168281.png" alt="Facebook">
+            </a>
+            <a href="#" aria-label="Twitter">
+                <img src="https://cdn-icons-png.flaticon.com/128/11823/11823292.png" alt="Twitter">
+            </a>
+            <a href="#" aria-label="LinkedIn">
+                <img src="https://cdn-icons-png.flaticon.com/128/1384/1384014.png" alt="LinkedIn">
+            </a>
+            <a href="https://www.instagram.com/fixai_gpt" aria-label="LinkedIn">
+                <img src="https://cdn-icons-png.flaticon.com/128/3670/3670274.png" alt="instagram">
+            </a>
+            <a href="https://github.com/fixaigpt/FIXAI-GPT" aria-label="LinkedIn">
+                <img src="https://cdn-icons-png.flaticon.com/128/2111/2111432.png" alt="github">
+            </a>
+        </div>
+        <div id="container12356">
+            <center><h4 style="color: rgb(0, 0, 0);font-size: 9px;">FIXAI GPT © 2024 ALL RIGHTS RESERVED</h4></center>
+        </div>    </footer>
+</div>
+</div>
+    <script>
+        function openPopup(id) {
+            const popupContainer = document.getElementById('popup-container');
+            const popupBody = document.getElementById('popup-body');
+            
+            // Adjust content based on the id
+            let content = '';
+            switch(id) {
+                case 'our-approach':
+                    content = '<P>Our Approach</h2><p>We follow a unique approach...</p>';
+                    break;
+                case 'research':
+                    content = '<P>Research</h2><p>Explore our latest research...</p>';
+                    break;
+                case 'models':
+                    content = '<P>AI Models</h2><p>Our advanced AI models...</p>';
+                    break;
+                case 'commands':
+                    content = '<P>Commands</h2><p>How to use various commands...</p>';
+                    break;
+                case 'blog':
+                    content = '<P>Blog</h2><p>Read our latest blog posts...</p>';
+                    break;
+                case 'contact':
+                    content = '<P>Contact</h2><p>Get in touch with us...</p>';
+                    break;
+                default:
+                    content = '<P>Content not found</h2>';
+            }
+            popupBody.innerHTML = content;
+            popupContainer.classList.add('open');
+        }
+
+        function closePopup() {
+            document.getElementById('popup-container').classList.remove('open');
+        }
+
+        function toggleMenu() {
+            const menu = document.querySelector('.menu');
+            menu.classList.toggle('open');
+        }
+    </script>
+    <script>
+        // Basic Obfuscation Example
+(function() {
+    function obfuscateCode() {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault(); // Disable right-click context menu
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'I' || e.key === 'i')) {
+                e.preventDefault(); // Disable Ctrl+U and Ctrl+I (view source / inspect)
+            }
+        });
+    }
+
+    function hideSource() {
+        obfuscateCode();
+        // Example of obfuscating code (Note: This is a simplistic example)
+        var originalScript = 'console.log("This code is obfuscated.");';
+        var obfuscatedScript = 'console["lo" + "g"]("This code is obfuscated.");';
+        eval(obfuscatedScript); // Execute obfuscated code
+    }
+
+    // Run hideSource function after page load
+    window.addEventListener('load', hideSource);
+})();
+
+    </script>
+    <script>
+        // Disable right-click
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+    
+        // Disable common keyboard shortcuts
+        document.addEventListener('keydown', function (e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'p')) {
+                e.preventDefault();
+            }
+        });
+    
+        // Detect developer tools
+        function detectDevTools() {
+            const threshold = 160; // Threshold in pixels
+            let devtoolsOpen = false;
+            let lastWidth = window.outerWidth;
+            let lastHeight = window.outerHeight;
+    
+            setInterval(() => {
+                if (window.outerWidth - lastWidth > threshold || window.outerHeight - lastHeight > threshold) {
+                    devtoolsOpen = true;
+                    alert('Please not change dimension of this site if you did it we block you from this site.');
+                }
+                lastWidth = window.outerWidth;
+                lastHeight = window.outerHeight;
+            }, 1000);
+        }
+    
+        detectDevTools();
+    
+        // Obfuscated JavaScript code
+        (function() {
+            var _0xabcde = ['\x6C\x6F\x67', '\x48\x65\x6C\x6C\x6F\x20\x57\x6F\x72\x6C\x64'];
+            (function(_0x12345, _0xabcde) {
+                var _0x98765 = function(_0x45678) {
+                    while (--_0x45678) {
+                        _0x12345['push'](_0x12345['shift']());
+                    }
+                };
+                _0x98765(++_0xabcde);
+            }(_0xabcde, 0x1e0));
+            var _0x56789 = function(_0x98765, _0xabcde) {
+                _0x98765 = _0x98765 - 0x0;
+                var _0x12345 = _0xabcde[_0x98765];
+                return _0x12345;
+            };
+            console[_0x56789('0x0')](_0x56789('0x1'));
+        })();
+    
+        // Smart Detector: Track user behavior
+        (function() {
+            let rightClickCount = 0;
+            let keyPressCount = 0;
+            let mouseMoveCount = 0;
+            const maxRightClicks = 5;
+            const maxKeyPresses = 10;
+            const maxMouseMoves = 50;
+            const resetTime = 10000; // Time in milliseconds
+    
+            // Monitor right-clicks
+            document.addEventListener('contextmenu', function() {
+                rightClickCount++;
+                if (rightClickCount > maxRightClicks) {
+                    alert('Suspicious activity detected: Excessive right-clicking!');
+                    rightClickCount = 0;
+                }
+            });
+    
+            // Monitor keyboard shortcuts
+            document.addEventListener('keydown', function(e) {
+                if (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'p')) {
+                    keyPressCount++;
+                    if (keyPressCount > maxKeyPresses) {
+                        alert('Suspicious activity detected: Excessive use of shortcuts!');
+                        keyPressCount = 0;
+                    }
+                }
+            });
+    
+            // Monitor mouse movements
+            document.addEventListener('mousemove', function() {
+                mouseMoveCount++;
+                if (mouseMoveCount > maxMouseMoves) {
+                    alert('Suspicious activity detected: Excessive mouse movements!');
+                    mouseMoveCount = 0;
+                }
+            });
+    
+            // Reset counters periodically
+            setInterval(() => {
+                rightClickCount = 0;
+                keyPressCount = 0;
+                mouseMoveCount = 0;
+            }, resetTime);
+        })();
+    
+        // Clipboard Monitoring
+        (function() {
+            document.addEventListener('copy', function(e) {
+                alert('Clipboard activity detected!');
+            });
+    
+            document.addEventListener('paste', function(e) {
+                alert('Clipboard paste detected!');
+            });
+        })();
+    
+        // Resource Usage Monitoring
+        (function() {
+            const checkInterval = 5000; // Check every 5 seconds
+            let lastMemoryUsage = 0;
+    
+            setInterval(() => {
+                const currentMemoryUsage = performance.memory ? performance.memory.usedJSHeapSize : 0;
+    
+                if (Math.abs(currentMemoryUsage - lastMemoryUsage) > 1e6) { // 1MB change
+                    alert('Unusual memory usage detected!');
+                }
+    
+                lastMemoryUsage = currentMemoryUsage;
+            }, checkInterval);
+        })();
+    
+        // Network Request Monitoring
+        (function() {
+            const originalFetch = window.fetch;
+            window.fetch = function(...args) {
+                console.log('Network request:', args[0]);
+                return originalFetch.apply(this, args);
+            };
+    
+            const originalXhrOpen = XMLHttpRequest.prototype.open;
+            XMLHttpRequest.prototype.open = function(...args) {
+                console.log('Network request:', args[1]);
+                return originalXhrOpen.apply(this, args);
+            };
+        })();
+    
+        // DOM Mutation Monitoring
+        (function() {
+            const observer = new MutationObserver((mutations) => {
+                for (let mutation of mutations) {
+                    console.log('DOM mutation detected:', mutation);
+                }
+            });
+    
+            observer.observe(document.body, { childList: true, subtree: true, attributes: true });
+        })();
+    
+        // Performance Profiling
+        (function() {
+            const profilingInterval = 10000; // Check every 10 seconds
+            let lastTime = performance.now();
+    
+            setInterval(() => {
+                const currentTime = performance.now();
+                const timeElapsed = currentTime - lastTime;
+                console.log('Performance profile - Time elapsed:', timeElapsed);
+                lastTime = currentTime;
+            }, profilingInterval);
+        })();
+    </script>
+  <script>
+    const recognition = new webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = false;
+    recognition.lang = 'en-US';
+
+    // Event listeners for speech recognition
+    recognition.onresult = function(event) {
+        const transcript = event.results[event.resultIndex][0].transcript.trim();
+        console.log('Command:', transcript);
+        processCommand(transcript);
+    };
+
+    recognition.onerror = function(event) {
+        console.error('Speech recognition error:', event.error);
+        speak("Sorry, I couldn't understand you. Please try again.");
+    };
+
+    recognition.onend = function() {
+        console.log('Recognition ended. Restarting...');
+        recognition.start(); // Restart recognition automatically
+    };
+
+    // Function to process user commands
+    function processCommand(command) {
+        let response = '';
+
+        if (command.toLowerCase().includes('hello')) {
+            response = 'how can i assist you';
+        } else if (command.toLowerCase().includes('current year')) {
+            response = `The current year is ${new Date().getFullYear()}.`;
+        } else if (command.toLowerCase().includes('current month')) {
+            const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            const currentMonth = months[new Date().getMonth()];
+            response = `The current month is ${currentMonth}.`;
+        } else if (command.toLowerCase().includes('time')) {
+            response = `The current time is ${new Date().toLocaleTimeString()}.`;
+        } else if (command.toLowerCase().includes('date')) {
+            response = `Today is ${new Date().toLocaleDateString()}.`;
+        } else if (command.toLowerCase().includes('search')) {
+            const searchTerm = command.replace(/search for/i, '').trim();
+            window.open(`https://www.google.com/search?q=${searchTerm}`);
+            response = `you are being redirected to Google now for results.`;
+        }
+
+        speak(response); // Use the speak function with the default voice
+    }
+
+    // Function to speak text with a soft, human-like voice
+    function speak(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 0.6;  // Further lower rate for smoother speech
+        utterance.pitch = 0.9;  // Lower pitch for a softer voice
+        utterance.volume = 1;   // Volume level (0 to 1), adjust if needed
+
+        // Speak the utterance with default voice
+        window.speechSynthesis.speak(utterance);
+    }
+
+    // Event listener for voiceBtn
+    document.getElementById('voiceBtn').addEventListener('click', () => {
+        try {
+            var voiceBtn = document.getElementById('voiceBtn');
+            if (!voiceBtn.classList.contains('active')) {
+                voiceBtn.classList.add('active');
+                recognition.start();
+                
+                var utterance = new SpeechSynthesisUtterance('welcome in the world of artficial intelligence , dear user i am your ai assistant , how can i assist you today');
+                utterance.rate = 0.8;  // Lower rate for smoother speech
+                utterance.pitch = 1.1;  // Lower pitch for a softer voice
+                utterance.volume = 1;   // Volume level (0 to 1), adjust if needed
+                window.speechSynthesis.speak(utterance);
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    });
+
+    // Check if the Wake Lock API is available
+    if ('wakeLock' in navigator) {
+        navigator.wakeLock.request('screen').then(() => {
+            console.log('Screen wake lock activated');
+        }).catch((err) => {
+            console.error('Failed to activate screen wake lock:', err);
+        });
+    } else {
+        console.warn('Wake Lock API is not available');
+    }
+</script>
+
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var header = document.querySelector('.header');
+          header.addEventListener('animationend', function() {
+              header.classList.remove('animated');
+          });
+      });
+      
+      </script>
+  <script>
+   document.getElementById("a9").addEventListener("click", function() {
+     document.getElementById("popup9").style.display = "flex";
+   });
+ 
+  
+   document.getElementById("closepopup9").addEventListener("click", function() {
+ document.getElementById("popup9").style.display = "none";
+ location.reload();
+});
+
+ 
+ </script>
+
+ <!-- <script>
+    // Function to create and show the popup
+    function createPopup() {
+        // Create the popup container
+        const popup = document.createElement('div');
+        popup.style.width = 'calc(100% - 40px)'; // Full width minus margins
+        popup.style.maxWidth = '400px'; // Maximum width
+        popup.style.border = '1px solid white'; // White border
+        popup.style.borderRadius = '15px'; // Add border radius
+        popup.style.backgroundColor = 'rgba(255, 255, 255, 0.532)'; // White background
+        popup.style.position = 'fixed';
+        popup.style.top = '50%';
+        popup.style.left = '50%';
+        popup.style.transform = 'translate(-50%, -50%)';
+        popup.style.boxShadow = '0 0 10px rgba(255, 255, 255, 0.532)';
+        popup.style.zIndex = '1000'; // Ensure it's on top of other content
+        popup.style.overflow = 'hidden'; // Hide overflow to maintain border radius
+
+        // Create and style the image container
+        const imageContainer = document.createElement('div');
+        imageContainer.style.width = '100%';
+        imageContainer.style.height = '200px'; // Adjust the height as needed
+        imageContainer.style.backgroundImage = 'url("https://i.postimg.cc/Y9bFp4rn/image.png")'; // Placeholder image
+        imageContainer.style.backgroundSize = 'cover';
+        imageContainer.style.backgroundPosition = 'center';
+        imageContainer.style.borderTopLeftRadius = '15px'; // Top-left corner radius
+        imageContainer.style.borderTopRightRadius = '15px'; // Top-right corner radius
+        imageContainer.style.borderBottom = '10px solid white'; // White border at the bottom of the image
+        popup.appendChild(imageContainer);
+
+        // Create and style the text container
+        const textContainer = document.createElement('div');
+        textContainer.style.padding = '20px';
+        textContainer.style.textAlign = 'center';
+        textContainer.style.backgroundColor = 'white'; // Ensure background matches popup
+        textContainer.style.position = 'relative'; // Position relative for the close button
+
+        const heading = document.createElement('h2');
+        heading.textContent = 'HAPPY INDEPENDENCE DAY ';
+        heading.style.margin = '0';
+        heading.style.paddingBottom = '20px';
+        textContainer.appendChild(heading);
+
+        const paragraph = document.createElement('p');
+        paragraph.textContent = '';
+        textContainer.appendChild(paragraph);
+
+        // Create and style the close button
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Close';
+        closeButton.style.backgroundColor = 'rgba(255, 255, 255, 0.532)'; // Silver background
+        closeButton.style.color = 'black'; // Black text
+        closeButton.style.border = '1px solid silver'; // Silver border
+        closeButton.style.borderRadius = '5px'; // Rounded corners for the button
+        closeButton.style.padding = '10px';
+        closeButton.style.width = '100%'; // Full width
+        closeButton.style.position = 'absolute';
+        closeButton.style.bottom = '0'; // Positioned at the bottom
+        closeButton.style.left = '0'; // Full width
+        closeButton.style.cursor = 'pointer';
+        closeButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+        textContainer.appendChild(closeButton);
+        popup.appendChild(textContainer);
+        // Append the popup to the body
+        document.body.appendChild(popup);
+        // Automatically hide the popup after 5 seconds
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 500000); // 5000 milliseconds = 5 seconds
+
+        // Optional: Close the popup when clicking outside
+        window.addEventListener('click', (event) => {
+            if (event.target === popup) {
+                popup.style.display = 'none';
+            }
+        });
+    }
+    // Function to check and show the popup based on the count
+    function showPopup() {
+        // Get the current count from localStorage
+        let count = parseInt(localStorage.getItem('popupCount'), 10) || 0;
+
+        if (count < 9) {
+            createPopup(); // Show the popup
+            count++; // Increment the count
+            localStorage.setItem('popupCount', count); // Update the count in localStorage
+        }
+    }
+
+    // Set a timeout to show the popup 2 seconds after page load
+    window.addEventListener('load', () => {
+        setTimeout(showPopup, 2000); // 2000 milliseconds = 2 seconds
+    });
+</script> -->
+</body>
+</html>
