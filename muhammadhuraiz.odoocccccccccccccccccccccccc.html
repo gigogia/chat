@@ -1,0 +1,2862 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="muhammadhuariz, MUHAMMAD HURAIZ , Muhammad Huraiz, Huraiz , About Huraiz, about huraiz">
+    <title>Centered Icon with Buttons</title>
+    <!-- <style>
+          --s: 37px; /* control the size */
+--c: #0000, #282828 0.5deg 119.5deg, #0000 120deg;
+--g1: conic-gradient(from 60deg at 56.25% calc(425% / 6), var(--c));
+--g2: conic-gradient(from 180deg at 43.75% calc(425% / 6), var(--c));
+--g3: conic-gradient(from -60deg at 50% calc(175% / 12), var(--c));
+background: var(--g1), var(--g1) var(--s) calc(1.73 * var(--s)), var(--g2),
+  var(--g2) var(--s) calc(1.73 * var(--s)), var(--g3) var(--s) 0,
+  var(--g3) 0 calc(1.73 * var(--s)) #ffffff;
+background-size: calc(2 * var(--s)) calc(3.46 * var(--s));  display: flex;
+
+    </style> -->
+    <style>
+        body {
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 255, 255);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Prevent overflow */
+            cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='15px' height='15px'%3E%3Ccircle cx='12' cy='12' r='10' fill='none' stroke='%23FFFFFF' stroke-width='2'/%3E%3C/svg%3E"), auto;
+
+        }
+
+#chatgpt-popup {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgb(0, 0, 0); /* Semi-transparent white background */
+      z-index: 1000; /* Ensure it is above all other content */
+      user-select: none;
+      -webkit-user-select: none; /* Safari */
+      -moz-user-select: none;    /* Firefox */
+      -ms-user-select: none;     /* IE */
+    }
+
+    #chatgpt-popup::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://cdn.dribbble.com/users/32512/screenshots/3363261/the_wave_natural_ai_by_gleb.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  z-index: -1;
+  filter: blur(20px) grayscale(100%) brightness(150%);
+}
+
+
+#chatgpt-popup-content {
+  background-color: #00000011;
+  border-radius: 0px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none; /* For Internet Explorer and Edge */
+  user-select: none;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;
+  /* background: linear-gradient(180deg, rgba(51, 51, 51, 0.749) 0%, rgba(0, 0, 0, 0.325) 100%);
+  background-size: 100% 200%;
+  animation: glowWave 2s infinite; */
+}
+
+#chatgpt-popup-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+    .container {
+    background-color: rgba(0, 0, 0, 0);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin: 40px auto; /* Equal top and bottom margin, auto for horizontal centering */
+    position: relative;
+    z-index: 1;
+    max-width: 80%; /* Optional: Adjust width to prevent stretching */
+}
+@keyframes borderAnimation {
+    0% {
+        border-color: rgba(255, 255, 255, 0);
+        box-shadow: 0 0 26px 0 rgba(0, 72, 255, 0); /* Initial shadow */
+        transform: scale(1); /* Initial scale */
+    }
+    25% {
+        border-color: rgba(119, 0, 255, 0);
+        box-shadow: 0 0 36px 10px rgba(0, 72, 255, 0); /* Increased shadow */
+        transform: scale(1.1); /* Slightly scaled up */
+    }
+    50% {
+        border-color: rgba(255, 255, 255, 0);
+        box-shadow: 0 0 46px 15px rgba(0, 72, 255, 0); /* Further increased shadow */
+        transform: scale(1.2); /* More scaled up */
+    }
+    75% {
+        border-color: rgba(119, 0, 255, 0);
+        box-shadow: 0 0 36px 10px rgba(0, 72, 255, 0); /* Decreased shadow */
+        transform: scale(1.1); /* Slightly scaled down */
+    }
+    100% {
+        border-color: rgba(255, 255, 255, 0);
+        box-shadow: 0 0 26px 0 rgba(0, 72, 255, 0); /* Back to initial shadow */
+        transform: scale(1); /* Back to initial scale */
+    }
+}
+
+.profile-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgba(186, 186, 186, 0); /* Initial border color */
+    margin: 0 auto 15px; /* Centered and margin-bottom */
+    background-clip: padding-box; /* Ensures border color change doesn't affect content */
+    box-shadow: 0 0 26px 0 rgba(0, 72, 255, 0); /* Initial glow with spread */
+    animation: borderGlow 2s infinite, borderAnimation 3s infinite; /* Combined animations */
+}
+
+.profile-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    animation: pulse 2s infinite ease-in-out;
+    opacity: 0.7; /* Adjust the opacity value as needed (0 to 1) */
+}
+/* Keyframes for the pulse animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
+        .profile-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0));
+            border-radius: 50%;
+        }
+
+        /* @keyframes whiteGlow {
+    50% { text-shadow: 0 0 10px rgba(0, 0, 0, 0.267), 0 0 20px rgba(0, 0, 0, 0.382), 0 0 30px rgba(0, 0, 0, 0.366), 0 0 40px rgba(0, 0, 0, 0.338); }
+} */
+
+.text {
+    font-weight: 100;
+    margin-top: 15px;
+    color: rgb(255, 255, 255); /* White text */
+    /* animation: whiteGlow 2s infinite; */
+}
+
+
+        hr {
+            width: 60%;
+            border: 1px solid rgba(255, 255, 255, 0.245);
+            margin: 20px auto;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 4px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color:rgba(186, 125, 255, 0.529); /* Button background color */
+}
+
+
+
+/* Optional: Add keyframes for a continuous glowing animation */
+/* @keyframes glow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(0, 123, 255, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+    }
+} */
+
+/* .button {
+    animation: glow 1.5s infinite; /* Continuous glowing animation */
+/* } */
+
+
+        .call-button {
+            background-color: rgba(255, 255, 255, 0.529); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */        }
+
+        .message-button {
+            background-color: rgba(255, 255, 255, 0.529); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */
+            color: black;
+          
+        }
+
+        .connect-button {
+            background-color: rgba(255, 255, 255, 0.529); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */            color: black;
+            
+        }
+        .booking-button {
+            background-color: rgba(255, 255, 255, 0.529); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */            color: black;
+            
+        }
+        .button img {
+            width: 24px;
+            height: 24px;
+        }
+
+       
+
+        /* Animation for the blue glow border */
+       
+
+        /* Full screen loading page */
+        .loading-page {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            color: white;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            z-index: 9999;
+        }
+
+        .loading-indicator {
+            font-size: 13px;
+            margin-bottom: 20px;
+            color:rgb(255, 255, 255);
+        }
+
+        .countdown {
+            font-size: 15px;
+            margin-top: 10px;
+            color:silver;
+        }
+        .content-container {
+            width: 800px;
+            max-width: 98%;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 40px auto; /* Centered and margin-top */
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .heading {
+            font-size: 24px;
+            margin: 20px 0; /* Adjusted margin for headings */
+        }
+
+        .paragraph {
+            color: rgb(161, 161, 161);
+            font-size: 12px;
+            line-height: 1.5;
+            margin: 5px auto;
+            max-width: 1000px;
+            text-align: center; /* Centered text in paragraphs */
+            letter-spacing: 1px;
+            padding-right: 10px;
+            user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            -webkit-user-select: none;
+            
+        }
+
+        .heading + hr {
+            margin: 10px auto; /* Centered <hr> */
+        }
+
+        /* Animation for headings */
+        .heading {
+            animation: fadeIn 1s ease-in-out;
+        }
+        .container1234 {
+            background-color: rgba(255, 255, 255, 0);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 40px auto; /* Equal top and bottom margin, auto for horizontal centering */
+            position: relative;
+            z-index: 1;
+            max-width: 90%; /* Adjusted for better responsiveness */
+            width: 400px;
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+
+        textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid rgba(31, 31, 31, 0);
+    border-radius: 5px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.151); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */    color: #ffffff; /* Text color */
+    border-bottom: 2px solid rgba(4, 0, 255, 0.888);
+    overflow: auto; /* Adds scrollbars if content overflows */
+    resize: none; /* Disables resizing */
+    font-size: 11px;
+    font-family: Arial, sans-serif; /* Font style for all textareas */
+    color:white;
+}
+
+textarea::placeholder {
+    color: #ffffff93; /* Placeholder text color */
+}
+
+
+/* Hide scrollbar for WebKit browsers */
+textarea::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+
+/* Hide scrollbar for Firefox */
+textarea {
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+}
+
+/* Hide scrollbar for IE and Edge */
+textarea {
+    -ms-overflow-style: none; /* Hide scrollbar in IE and Edge */
+}
+
+
+
+
+
+
+.button1234 {
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 100%; /* Makes the button the same width as the textarea */
+    position: relative;
+    overflow: hidden;
+    animation: glow-animation 1.5s infinite;
+}
+
+.button1234::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */    border-radius: 5px;
+    filter: blur(5px);
+    z-index: 0;
+    animation: shine-animation 2s infinite;
+}
+
+.button1234:hover::before {
+    animation: none; /* Disable shine effect on hover */
+}
+
+.button1234 span {
+    position: relative;
+    z-index: 1;
+}
+
+
+
+@keyframes shine-animation {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+      
+        /* Responsive design */
+        @media (max-width: 600px) {
+            .container1234 {
+                width: 95%; /* Slightly adjusted for mobile view */
+                padding: 15px; /* Adjust padding for mobile view */
+            }
+
+            .button1234 {
+                padding: 12px; /* Adjust padding if needed for better fit */
+                font-size: 14px; /* Smaller font size for mobile */
+            }
+        }
+        #container123 {
+    display: flex;
+    flex-direction: column; /* Allow vertical stacking */
+    justify-content: space-between; /* Space out content */
+    align-items: flex-start; /* Align items to the start */
+    padding: 5px;
+    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+ 
+    margin: 20px auto; /* Center the container horizontally */
+    width: 800px; /* Fixed width */
+    max-width: 98%; /* Ensure it doesn't exceed the viewport width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    position: relative; /* For absolute positioning of progress bar */
+}
+
+.progress {
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */
+        justify-content: flex-start;
+    border-radius: 100px;
+    align-items: center;
+    position: absolute; /* Position progress bar absolutely */
+    bottom: 20px; /* Space from the bottom of the container */
+    left: 20px; /* Align with the left padding of the container */
+    padding: 0 5px;
+    display: flex;
+    height: 5px;
+    width: 600px; /* Fixed width */
+    max-width: 85%; /* Default max-width */
+}
+
+/* Media query for desktops */
+@media (min-width: 1024px) {
+    .progress {
+        max-width:100%; /* Max-width for larger screens */
+    }
+}
+
+/* Media query for tablets */
+@media (max-width: 1024px) {
+    .progress {
+        max-width:100%; /* Adjust max-width for tablets */
+    }
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    .progress {
+        max-width: 85%; /* Adjust max-width for mobile devices */
+    }
+}
+
+
+#text-container123 {
+    flex: 2;
+    padding-left: 10px;
+}
+
+/* @keyframes glowing {
+    0% { text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #00f, 0 0 20px #00f; }
+    50% { text-shadow: 0 0 10px #00f, 0 0 20px #00f, 0 0 30px #00f, 0 0 40px #00f; }
+    100% { text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #00f, 0 0 20px #00f; }
+} */
+
+#title123 {
+    font-size: 1.8rem;
+    color: #fff; /* White text */
+    margin-bottom: 10px;
+    /* animation: glowing 1.5s infinite; */
+}
+
+
+#description123 {
+  color: rgba(255, 255, 255, 0.896);
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 5px auto;
+  text-align: justify;
+  letter-spacing: 1px;
+  padding-right: 10px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  
+}
+
+#description1234567 {
+  color: rgba(255, 255, 255, 0.896);
+  font-size: 10px;
+  line-height: 1.5;
+  margin: 5px auto;
+  text-align: justify;
+  letter-spacing: 1px;
+  padding-right: 10px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  
+}
+
+#date123 {
+    font-size: 0.9rem;
+    color: #999;
+}
+#time123 {
+    font-size: 0.9rem;
+    color: #999;
+}
+
+
+
+
+.progress-value {
+    background: #007bff; /* Progress color */
+    height: 100%;
+    border-radius:50px;
+    width: 15%; /* Initial completion */
+}
+
+@keyframes load {
+  from { width: 0; }
+  to { width: 100%; }
+}
+/* Tooltip text */
+.tooltip {
+    visibility: hidden;
+    background-color: rgba(255, 255, 255, 0.258); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */ 
+       color: #000000; /* Text color */
+    text-align: center;
+    border-radius: 5px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    top: 100%; /* Position below the button */
+    left: 50%;
+    transform: translateX(-50%); /* Center tooltip */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s; /* Fade in/out effect */
+    white-space: nowrap; /* Prevent text wrapping */
+    margin-top: 8px; /* Space between button and tooltip */
+    color:black;
+    
+}
+
+
+/* Tooltip arrow */
+.tooltip::after {
+    content: '';
+    position: absolute;
+    top: -5px; /* Position the arrow just above the tooltip */
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #33333300 transparent; /* Arrow color and direction */
+}
+
+/* Show tooltip on hover or focus */
+.button:hover .tooltip,
+.button:focus .tooltip,
+.button:active .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+.container123456 {
+            background-color: rgba(0, 0, 0, 0);
+            padding: 5px;
+            border-radius: 2px;
+            text-align: center;
+            margin: 5px auto; /* Equal top and bottom margin, auto for horizontal centering */
+            position: relative;
+            z-index: 1;
+            max-width: 90%; /* Adjusted for better responsiveness */
+            width: 800px;
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+        .button123456 {
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%; /* Makes the button the same width as the textarea */
+    position: relative;
+}
+.button123456:hover {
+    background-color: rgba(0, 0, 0, 0.319); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */}
+
+    .button129 {
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 12px;
+    width:300px; /* Makes the button the same width as the textarea */
+    position: relative;
+    max-width: 90%;
+    justify-items: center;
+}
+.button129:hover {
+    background-color: rgba(0, 0, 0, 0.319); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */}
+    .button12000 {
+            background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 12px;
+    width:300px; /* Makes the button the same width as the textarea */
+    position: relative;
+    max-width: 90%;
+}
+.button123456789 {
+    background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent white */
+    backdrop-filter: blur(10px); /* Blur effect */    color: rgb(0, 0, 0);
+    border: none;
+    padding: 5px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 12px;
+    width: 100%; /* Makes the button the same width as the textarea */
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-icon {
+    width: 16px; /* Adjust icon width */
+    height: 16px; /* Adjust icon height */
+    margin-right: 5px; /* Space between icon and text */
+}
+
+#verificationMessage {
+    display: none;
+    position: fixed;
+    top:1%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 0, 0, 0.6); /* Semi-transparent red */
+    backdrop-filter: blur(10px); /* Blur effect */
+    color: rgba(255, 255, 255, 0.896); /* Semi-transparent white */
+    padding: 5px 20px;
+    border: 1px solid rgba(255, 0, 0, 0); /* Transparent border */
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 1000; /* Ensure it's on top of other content */
+    margin: 5px auto;
+    letter-spacing: 1px;
+    user-select: none; /* Prevent text selection */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+#alertmessage {
+    display: none;
+    position: fixed;
+    top: 10%; /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 0, 0, 0.6); /* Semi-transparent red */
+    backdrop-filter: blur(10px); /* Blur effect */
+    color: rgba(255, 255, 255, 0.896); /* Semi-transparent white */
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 0, 0, 0); /* Transparent border */
+    font-size: 14px; /* Adjust font size if needed */
+    line-height: 1.5;
+    text-align: center;
+    border-radius: 5px;
+    z-index: 2000; /* Ensure it's above the form container */
+    width: 80%; /* Adjust width as needed */
+    max-width: 500px; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the message */
+    letter-spacing: 1px;
+    user-select: none; /* Prevent text selection */
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+        #closehtn123 {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: #44444400;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width:8px;
+            height:8px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #closehtn123:hover {
+            background: #666;
+        }
+
+
+
+
+
+
+
+
+
+
+/* Popup Styling */
+.popup098789 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  background-color: rgb(0, 0, 0); /* White background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup-content098789 {
+ background-color: rgb(0, 0, 0); /* White background */
+  backdrop-filter: blur(10px); /* Blur effect */  
+  padding: 20px;
+  border-radius: 8px;
+  width: 900px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto; /* Enable scrolling */
+  position: relative;
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari) */
+.popup-content098789::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Internet Explorer and Edge */
+.popup-content098789 {
+    
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+
+.hidden098789 {
+  display: none;
+}
+/* Container for form and icon */
+.form-container098789 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(0, 0, 0); /* White background */
+    backdrop-filter: blur(10px); /* Blur effect */  
+      border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0); /* Slight shadow for visibility */
+    max-width: 500px;
+    margin:5px auto;
+    padding:5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden; /* Hide both scrollbars */
+    height: 100vh; /* Limits the height to 90% of viewport height */
+    position: relative; /* Ensure that the container can scroll */
+}
+
+/* Hide scrollbar for WebKit browsers (e.g., Chrome, Safari) */
+.form-container098789::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for Internet Explorer and Edge */
+.form-container098789 {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+/* Ensure the content is still scrollable */
+.form-container098789 {
+    overflow: auto;
+}
+
+
+/* Icon container styling */
+.icon-container098789 {
+    margin-bottom: 20px;
+}
+
+/* Icon styling */
+.form-icon098789 {
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Basic styling for the form */
+.form098789 {
+    width: 100%;
+}
+
+/* Form title styling */
+.form-title098789 {
+    font-size: 26px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Label styling */
+.form-label098789 {
+    display: block;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+/* Input field styling */
+.form-input098789 {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #a5a5a5b7;
+    border-radius: 8px;
+    font-size: 14px;
+    margin-bottom: 18px;
+    box-sizing: border-box;
+    background-color: rgb(0, 0, 0); /* White background */
+  backdrop-filter: blur(10px); /* Blur effect */
+  color:rgb(255, 255, 255);
+}
+
+/* Submit button styling */
+.form-submit098789 {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-submit098789:hover {
+    background-color: #262626;
+    transform: translateY(-2px);
+}
+
+/* Close button styling */
+.close-button098789 {
+    background-color: #000000;
+    color: #007bff;
+    border: 1px solid #dddddd58;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.close-button098789:hover {
+    background-color: #e0e0e043;
+    transform: translateY(-2px);
+}
+
+
+/* Styles for the indicator */
+.indicator {
+    color: rgb(255, 0, 0);
+    background-color: rgba(255, 0, 0, 0);
+    padding: 2px 10px;
+    margin-top: 5px;
+    text-align: center;
+    display: none;  /* Initially hidden */
+    border: 1px white;
+    border: 5px;
+}
+
+#audio-element-9r985458t4983 {
+    display: block; /* Ensure the element is visible */
+    background: none; /* Remove any background */
+    height: 40px;
+    margin: 25px auto; /* Margin at the top and bottom, centers it horizontally */
+    border-radius: 50px;
+    border: none; /* Remove border if any */
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div id="chatgpt-popup">
+        <div id="chatgpt-popup-content">
+            <div id="alertmessage">Your information has been submitted successfully!</div>
+
+            <div id="popup098789" class="popup098789 hidden098789">
+                <div class="popup-content098789">
+                    
+                    <div class="form-container098789">
+                        <div class="icon-container098789">
+                            <img src="https://i.postimg.cc/prZhbTgB/Whats-App-Image-2024-07-26-at-21-00-11-e9f8fbf9.jpg" alt="Icon" class="form-icon098789" />
+                        </div>
+                        <form class="form098789">
+                            <h2 class="form-title098789">VERIFY IDENTITY</h2>
+                            <input type="text" placeholder="Enter your name" class="form-input098789" required />
+                            <input type="email" placeholder="Enter your email" class="form-input098789" required />
+                            <div class="indicator098789"></div>
+                            <button class="button123456789" onclick="startVerification()" style="
+                            color: white;
+                            border:1px solid white;
+                            padding: 10px 20px;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            background: linear-gradient(45deg, #000000, #000000, #000000, #000000);
+                            background-size: 200% 200%;
+                            animation: gradientAnimation 3s ease infinite;
+                            transition: transform 0.3s ease, box-shadow 0.3s ease;
+                            backdrop-filter: blur(10px); /* Blur effect */
+                        ">
+                                 <img src="https://i.postimg.cc/prZhbTgB/Whats-App-Image-2024-07-26-at-21-00-11-e9f8fbf9.jpg" alt="icon" class="button-icon"> Verify
+                                    </button>
+                                    &nbsp;
+                            <button type="submit" class="form-submit098789">GET STARTED</button>
+                            <center>
+                                <h3 style="color:red;font-size: 12px;">
+                                    Your information is required , if you want to ignore  this form click on button given below
+                                </h3>
+                            </center>
+                            <!-- Close button below form -->
+                            <button id="closePopup098789" class="close-button098789" onclick="hidePopup()">RETURN BACK NOW</button>
+                            <!-- Indicator for error messages or status -->
+                        </form>
+                    </div>
+                        
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const nameInput = document.querySelector('.form-input098789[type="text"]');
+                            const emailInput = document.querySelector('.form-input098789[type="email"]');
+                            const form = document.querySelector('.form098789');
+                            const emailError = document.createElement('span');
+                            emailError.style.color = 'red';
+                            emailInput.parentNode.insertBefore(emailError, emailInput.nextSibling);
+                    
+                            // Create an indicator for showing errors or status messages
+                            const indicator = document.createElement('div');
+                            indicator.className = 'indicator';  // Assign the indicator class
+                            form.appendChild(indicator);
+                    
+                            // Function to validate email format
+                            function validateEmail(email) {
+                                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                return re.test(String(email).toLowerCase());
+                            }
+                    
+                            // Event listener for name input to enforce 8-character limit
+                            nameInput.addEventListener('input', function () {
+                                if (nameInput.value.length > 8) {
+                                    nameInput.value = nameInput.value.slice(0, 8);
+                                    indicator.textContent = 'Name cannot be more than 8 characters.';
+                                    indicator.style.display = 'block';
+                                } else {
+                                    indicator.style.display = 'none';
+                                }
+                            });
+                    
+                            // Event listener for live email validation
+                            emailInput.addEventListener('input', function () {
+                                if (validateEmail(emailInput.value)) {
+                                    emailError.textContent = '';
+                                    indicator.style.display = 'none';
+                                } else {
+                                    emailError.textContent = 'Invalid email format';
+                                    indicator.textContent = 'Invalid email format';
+                                    indicator.style.display = 'block';
+                                }
+                            });
+                    
+                            // Form submit event listener to validate inputs and replace the button
+                            form.addEventListener('submit', function (event) {
+                                let isValid = true;
+                    
+                                if (nameInput.value.length === 0) {
+                                    alert('Name is required.');
+                                    isValid = false;
+                                }
+                    
+                                if (!validateEmail(emailInput.value)) {
+                                    alert('Invalid email format.');
+                                    isValid = false;
+                                }
+                    
+                                if (!isValid) {
+                                    event.preventDefault();
+                                    indicator.textContent = 'Please correct the errors above.';
+                                    indicator.style.display = 'block';
+                                } else {
+                                    // Replace the button after form submission
+                                    const button = document.querySelector('.button129');
+                                    const newButton = document.createElement('button');
+                                    newButton.className = 'button129';
+                                    newButton.onclick = showPopup;
+                                    newButton.style.color = 'rgb(255, 255, 255)';
+                                    newButton.style.border = 'rgba(214, 179, 255, 0)';
+                                    newButton.style.padding = '10px 20px';
+                                    newButton.style.borderRadius = '5px';
+                                    newButton.style.cursor = 'default';
+                                    newButton.style.backgroundColor = 'rgba(119, 0, 255, 0)';
+                                    newButton.style.backdropFilter = 'blur(10px)';
+                                    newButton.style.backgroundSize = '200% 200%';
+                                    newButton.style.animation = 'gradientAnimation 3s ease infinite';
+                                    newButton.style.transition = 'transform 0.3s ease, box-shadow 0.3s ease';
+                                    newButton.style.pointerEvents = 'none'; // Disable pointer events
+                                    newButton.textContent = 'WELCOME';
+                    
+                                    button.replaceWith(newButton);
+                                }
+                            });
+                    
+                            // Function to deactivate button on close button click
+                            document.getElementById('closePopup098789').addEventListener('click', function () {
+                                const button = document.querySelector('.button129');
+                                button.disabled = true;
+                                button.style.cursor = 'not-allowed';
+                                button.style.opacity = '0.5';
+                            });
+                    
+                            // Function to show the popup (add your popup logic here)
+                            function showPopup() {
+                                // Your popup logic here
+                            }
+                        });
+                    </script>
+                    
+                    
+                              
+                </div>
+              </div>
+              <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Get form and alert message elements
+                    const form = document.querySelector('.form098789');
+                    const alertMessage = document.getElementById('alertmessage');
+                    const popup = document.getElementById('popup098789');
+            
+                    // Function to play voice response
+                    function playVoiceResponse(message) {
+                        const utterance = new SpeechSynthesisUtterance(message);
+                        utterance.voice = speechSynthesis.getVoices().find(voice => voice.name === 'Google UK English Male'); // Adjust the voice as needed
+                        utterance.pitch = 1; // Adjust pitch as needed
+                        utterance.rate = 1; // Adjust rate as needed
+                        utterance.volume = 1; // Adjust volume as needed
+                        speechSynthesis.speak(utterance);
+                    }
+            
+                    // Add event listener for form submission
+                    form.addEventListener('submit', function(event) {
+                        event.preventDefault(); // Prevent the default form submission
+                        
+                        // Show the alert message
+                        alertMessage.style.display = 'block';
+                        
+                        // Play the voice response
+                        playVoiceResponse('Your information has been submitted successfully!');
+                        
+                        // Hide the alert message and popup after a short delay
+                        setTimeout(() => {
+                            alertMessage.style.display = 'none'; // Hide the alert message
+                            popup.style.display = 'none'; // Hide the popup
+                        }, 5000); // 3 seconds delay
+                    });
+            
+                    // Function to show the popup
+                    window.showPopup = function() {
+                        popup.classList.remove('hidden098789');
+                    };
+            
+                    // Function to hide the popup
+                    window.hidePopup = function() {
+                        popup.classList.add('hidden098789');
+                    };
+            
+                    // Optional: Hide the popup if clicking outside of it
+                    document.addEventListener('click', function(event) {
+                        if (event.target.classList.contains('popup098789')) {
+                            hidePopup();
+                        }
+                    });
+                });
+            </script>
+            
+            <div id="verificationMessage">
+                <button id="closehtn123">✕</button>
+
+                Please click to continue with google to ensure that you are human.
+                <!-- "Hey there, Earthling! Before you dive into the wonders of our site, we need to make sure you're not a time-traveling robot or a sneaky alien from another galaxy 😂. Please complete the CAPTCHA, and if you manage to crack it, congratulations! You're officially not a bot—unless you're a really smart bot, in which case, kudos for being clever! Whether you're human, a robot with a PhD, or an alien just passing through, we’re thrilled to have you here. Buckle up and get ready for an interstellar experience, or at least a good time! Welcome aboard, space traveler!" -->
+            </div> 
+    <div class="container">
+        <div class="profile-container">
+            <img src="https://i.ibb.co/nLZF0zD/Whats-App-Image-2024-07-28-at-06-21-57-f6297cfe.jpg" alt="Profile Picture">
+            <!-- https://i.ibb.co/f0KPn25/Whats-App-Image-2024-05-11-at-20-39-50-e8dd7c80.jpg -->
+        </div>
+        <br>
+        <div class="text">𝙼 𝚄 𝙷 𝙰 𝙼 𝙼 𝙰 𝙳 &nbsp; 𝙷 𝚄 𝚁 𝙰 𝙸 𝚉
+        </div>
+        
+        <hr>
+
+        <div class="button-container">
+            <button class="button call-button" onclick="startmeeting()">
+                <img src="https://cdn-icons-png.flaticon.com/128/8350/8350415.png" alt="Call">
+                <span class="tooltip">Start meeting book now</span>
+            </button>
+            
+            <button class="button message-button" onclick="startMessage()">
+                <img src="https://cdn-icons-png.flaticon.com/128/9446/9446889.png" alt="Message">
+                <span class="tooltip">Send Message through sms</span>
+            </button>
+
+            <button class="button connect-button" onclick="startbox()">
+                <img src="https://cdn-icons-png.flaticon.com/128/10413/10413840.png" alt="Connect">
+                <span class="tooltip">Connect on whatsapp</span>
+            </button>
+
+            <button class="button booking-button" onclick="startforms()">
+                <img src="https://cdn-icons-png.flaticon.com/128/7771/7771984.png" alt="Connect">
+                <span class="tooltip">make a request</span>
+            </button>
+
+            <button class="button booking-button" onclick="startcalls()">
+                <img src="https://cdn-icons-png.flaticon.com/128/16701/16701956.png" alt="Connect">
+                <span class="tooltip">make a call</span>
+            </button>
+            
+        </div>
+       
+    </div>
+    
+    <center>
+               
+        <div class="container123456">
+
+            <button class="button129" onclick="showPopup()" style="
+            color: rgba(255, 255, 255, 0.778);
+            border:rgba(255, 255, 255, 0);
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            background-size: 200% 200%;
+            animation: gradientAnimation 3s ease infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        ">
+            <img src="https://cdn-icons-png.flaticon.com/128/299/299409.png" alt="icon" class="button-icon">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;VERIFY YOUR IDENTITY PLEASE 
+        </button>
+        
+        &nbsp;
+        <!-- https://cdn-icons-png.flaticon.com/128/281/281764.png -->
+        <script>
+            function showRegister() {
+    // Initial information
+    if (!confirm("Welcome to the registration process!\n\nHere’s how to complete your registration:\n1. Enter your name and email address accurately.\n2. Ensure your email is valid and correctly formatted.\n\nIf you need any help during this process, please reach out to our support team.\n\nDo you want to continue with the registration?")) {
+        alert("Registration process canceled.\nIf you need further assistance, please contact our support team at support@example.com.");
+        return;
+    }
+
+    // Get user input for name with assistance content
+    alert("Please enter your name in the next prompt.\nMake sure to use your full name as it appears on your official documents.");
+    var name = prompt("Enter your full name:");
+    if (name === null || name.trim() === "") {
+        alert("Name is required.\n\nPlease provide your name to proceed. If you need assistance, our support team is available to help you.\nContact support: support@example.com");
+        return;
+    }
+
+    // Confirm name entry
+    if (!confirm(`You entered the name: ${name}\n\nDo you want to continue with this name?`)) {
+        alert("Registration process canceled.\nIf you need further assistance, please contact our support team at support@example.com.");
+        return;
+    }
+
+    // Get user input for email with assistance content
+    alert("Please enter your email address in the next prompt.\nEnsure that your email is in the correct format (e.g., user@example.com).");
+    var email = prompt("Enter your email address:");
+    if (email === null || email.trim() === "" || !validateEmail(email)) {
+        alert("A valid email address is required.\n\nPlease ensure your email is correctly formatted (e.g., user@example.com). If you encounter issues, contact support at support@example.com for assistance.");
+        return;
+    }
+
+    // Confirm email entry
+    if (!confirm(`You entered the email: ${email}\n\nDo you want to continue with this email?`)) {
+        alert("Registration process canceled.\nIf you need further assistance, please contact our support team at support@example.com.");
+        return;
+    }
+
+    // Confirm submission
+    if (confirm(`Here is the information you've entered:\n\nName: ${name}\nEmail: ${email}\n\nDo you want to submit this information?\n\nIf you have any questions or need help, contact our support team at support@example.com.`)) {
+        alert("Form submitted successfully!\n\nThank you for registering with us.\n\nIf you need further assistance, feel free to reach out to our support team at support@example.com.");
+        // Add your form submission logic here
+    } else {
+        alert("Form submission canceled.\n\nIf you need any further assistance or have questions, please contact our support team at support@example.com.");
+    }
+}
+
+// Function to validate email format
+function validateEmail(email) {
+    var re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
+
+        </script>
+        &nbsp;
+        <br>
+        <br>
+        <br>
+        <p id="description1234567" style="color:rgba(151, 151, 151, 0.889);">choose any type  of contact option given on the top ↗ that you want to make connection with Muhammad Huraiz! we are avaliable here 24/7</p>
+&nbsp;
+        <p id="description1234567" style="color:rgb(255, 255, 255);">
+            Welcome to my personal page, where you can connect with me both personally and professionally. This space is designed for seamless interaction, whether you have personal matters, business questions, or any other topics in mind. Feel free to reach out at your convenience, and let’s keep our conversations engaging and productive. I’m here to connect and collaborate without any hassle.</p>
+        <br>
+             <p id="description123">continue with Ai to ensure that you are human and have power to handle this page or to get best user experience , click on the button given below →</p>
+                
+&nbsp;
+<div id="container123">
+    <div id="text-container123">
+       <center><h3 style="color: #fffffff1;font-size:13px;">VERIFY YOUR IDENTITY</h3>
+       </center> 
+ <p id="description123">"Please complete the CAPTCHA to verify that you are human. This helps prevent automated bots from accessing the site. And just to make sure, we also want to confirm that you are not an alien from another galaxy. 😂 Have a great day!"</p>
+        </div>
+        </div>
+            
+            &nbsp;
+            <script>
+                window.addEventListener('load', () => {
+                    setTimeout(() => {
+                        const message = document.getElementById('verificationMessage');
+                        if (message) {
+                            message.style.display = 'block';
+                        } else {
+                            console.warn('Message element not found.');
+                            return;
+                        }
+        
+                        // Ensure voices are loaded before using them
+                        const synth = window.speechSynthesis;
+        
+                        // Wait for voices to be loaded
+                        function waitForVoices() {
+                            return new Promise(resolve => {
+                                if (synth.getVoices().length > 0) {
+                                    resolve();
+                                } else {
+                                    const voicesChanged = () => {
+                                        if (synth.getVoices().length > 0) {
+                                            synth.removeEventListener('voiceschanged', voicesChanged);
+                                            resolve();
+                                        }
+                                    };
+                                    synth.addEventListener('voiceschanged', voicesChanged);
+                                }
+                            });
+                        }
+        
+                        waitForVoices().then(() => {
+                            // Text for voice response
+                            const text = "verify first";
+        
+                            const utterance = new SpeechSynthesisUtterance(text);
+        
+                            // Customize to your preferred male voice
+                            const voices = synth.getVoices();
+                            const maleVoice = voices.find(voice => voice.name === 'Google UK English Male');
+        
+                            if (maleVoice) {
+                                utterance.voice = maleVoice;
+                            } else {
+                                console.warn('Preferred voice not found.');
+                            }
+        
+                            utterance.pitch = 0.8; // Adjust pitch for a professional tone
+                            utterance.rate = 1;    // Adjust rate for a natural speed
+                            utterance.volume = 1;  // Set volume to maximum for loudness
+        
+                            // Speak the message
+                            synth.speak(utterance);
+        
+                            const closeBtn = document.getElementById('closehtn123');
+                            if (closeBtn) {
+                                closeBtn.addEventListener('click', () => {
+                                    message.style.display = 'none';
+                                    // Stop the speech if it's still ongoing
+                                    if (synth.speaking) {
+                                        synth.cancel();
+                                    }
+                                });
+                            } else {
+                                console.warn('Close button not found.');
+                            }
+        
+                            setTimeout(() => {
+                                // Hide the message
+                                message.style.display = 'none';
+        
+                                // Automatically click the button after hiding the message
+                                const button = document.querySelector('.button129');
+                                if (button) {
+                                    console.log('Clicking button...');
+                                    button.click();
+                                } else {
+                                    console.warn('Button with class "button129" not found.');
+                                }
+        
+                            }, 2500); // Wait for 2.5 seconds to hide the message and click the button
+        
+                        });
+                    }, 8000); // Show the message 8 seconds after page load
+                });
+        
+                // Add event listener for the button to play audio and trigger other actions
+                document.addEventListener('DOMContentLoaded', () => {
+                    const audioButton = document.querySelector('.button129');
+                    if (audioButton) {
+                        audioButton.addEventListener('click', () => {
+                            // Play the audio element
+                            const audioElement = document.getElementById('audio-element-9r985458t4983');
+                            if (audioElement) {
+                                console.log('Playing audio...');
+                                audioElement.play().catch(error => {
+                                    console.warn('Error playing audio:', error);
+                                });
+                            } else {
+                                console.warn('Audio element with ID "audio-element-9r985458t4983" not found.');
+                            }
+                        });
+                    } else {
+                        console.warn('Audio button not found.');
+                    }
+                });
+            </script>
+            
+            
+            
+            
+            
+            
+            
+            
+            <br>
+            <div id="container123">
+                <div id="text-container123">
+                    <h3 style="color: #fffffff1;font-size:13px;">SEND MESSAGE HERE</h3>
+
+                 <p id="description123"> Dear user here you send message from your email id with secure method by input your message here and then click button to send email to muhammad huraiz direclty and you receive a direct response to him.</p>
+                    </div>
+                    </div>
+
+            <textarea id="message" placeholder="leave a message on email"></textarea>
+            <button class="button123456" onclick="sendMail()" style="
+            color: rgba(0, 0, 0, 0.778);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            background-size: 200% 200%;
+            animation: gradientAnimation 3s ease infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        "> SEND</button>
+
+<div id="container123">
+    <div id="text-container123">
+        <h3 style="color: #fffffff1;font-size:13px;">MEET MUHAMMAD! ON GOOGLE MEETS</h3>
+
+        <hr id="bar" style="
+        border: none;
+        height: 2px; 
+        background-color: rgba(155, 155, 155, 0.619);
+        width: 50%; /* Adjust width as needed */
+        margin-left: 0; /* Align to the left side */
+        margin-right: auto; /* Ensure it does not shift to the right */
+        margin-top: 10px; /* Adjust spacing above if needed */
+        margin-bottom: 10px; /* Adjust spacing below if needed */
+    "> 
+     <p id="description123">Hey! i am Ai assistant of muhammad huraiz , i am here to monitor this site and handle bookings for meetings on this personal dashboard of muhammad huraiz "our business owner as well"</p>
+        </div>
+        </div>
+            &nbsp;
+            <button class="button123456789" onclick="startgoogle()" style="
+            color: rgba(0, 0, 0, 0.778);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            background-size: 200% 200%;
+            animation: gradientAnimation 3s ease infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        " >
+                <img src="https://cdn-icons-png.flaticon.com/128/10829/10829162.png" alt="icon" class="button-icon">
+                MEET ON GOOGLE
+            </button>
+        </div>
+<script>
+    
+</script>
+        <script>
+            function sendMail() {
+                // Get the message from the textarea
+                var userMessage = document.getElementById('message').value.trim();
+                
+                // Construct the email content with the specified format
+                var subject = "USER REQUEST TO CONNECT WITH MUHAMMAD HURAIZ";
+                var content = `Dear Muhammad Huraiz,\n\nI am very excited to talk to you. Do you have time for me? Here is my message:\n\n${userMessage}\n\nBest regards,`;
+                
+                // Create a mailto link to open user's email client
+                var mailtoLink = `mailto:huraizart123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(content)}`;
+                
+                // Open the mail client with the pre-filled content
+                window.location.href = mailtoLink;
+            }
+        </script>
+        
+</center>
+    <script>
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const message = document.getElementById('message').value;
+
+            const mailtoLink = `mailto:your-email@example.com?subject=New Message&body=${message}`;
+            window.location.href = mailtoLink;
+        });
+    </script>
+     <div id="container123">
+        <div id="text-container123">
+            <h2 style="color:rgb(255, 255, 255);position: relative; display: inline-block; cursor: pointer;font-size:15px;"
+            title="info abou muhammad huraiz">PRIVACY POLICY
+            </h2>
+            <hr id="bar" style="
+            border: none;
+            height: 2px; 
+            background-color: rgba(155, 155, 155, 0.619);
+            width: 50%; /* Adjust width as needed */
+            margin-left: 0; /* Align to the left side */
+            margin-right: auto; /* Ensure it does not shift to the right */
+            margin-top: 10px; /* Adjust spacing above if needed */
+            margin-bottom: 10px; /* Adjust spacing below if needed */
+        "> 
+        
+                    <h3 style="color: #007bffaf;font-size:13px;">Site Information Security</h3>
+                    <h3 style="color: #ff0000a6;font-size:13px;">Warning</h3>
+                    <p id="description123" style="color:rgba(255, 0, 0, 0.607);">
+
+"Please note that you should not personally interact with any element of our website. We are monitoring your activity, so do not misuse anything."
+                    </p>
+
+
+
+         <p id="description123">
+            We take significant measures to protect the information on our site from unauthorized access and misuse. Our website is designed to ensure that sensitive information is not accessible to users beyond their intended scope. Access controls and encryption are in place to safeguard the integrity and confidentiality of site data.
+            
+            However, it is important to note that while we strive to protect our information, no system can be completely impervious to all potential threats. We continuously review and update our security practices to address emerging risks.
+            
+            </p>
+         </div>
+         </div>
+    <div id="container123">
+        <div id="text-container123">
+            <h2 id="title123" style="color:rgb(255, 255, 255);position: relative; display: inline-block; cursor: pointer;"
+            title="info about muhammad huraiz">ABOUT
+            </h2>
+            <hr id="bar" style="
+            border: none;
+            height: 2px; 
+            background-color: rgba(155, 155, 155, 0.619);
+            width: 50%; /* Adjust width as needed */
+            margin-left: 0; /* Align to the left side */
+            margin-right: auto; /* Ensure it does not shift to the right */
+            margin-top: 10px; /* Adjust spacing above if needed */
+            margin-bottom: 10px; /* Adjust spacing below if needed */
+        "> 
+      <p id="description123">
+        Muhammad Huraiz is currently a dedicated student who embarked on his professional studies in 2024. Born in 2005 in Pakistan, he is diligently working towards his goals while managing his own business. His commitment to his education and business ventures demonstrates his ambition and foresight for the future. Muhammad Huraiz's ability to balance both academic and entrepreneurial pursuits highlights his exceptional time management and multitasking skills.
+    </p>
+    
+    <p id="description123">
+        As a business owner, Muhammad Huraiz is focused on building a strong foundation for his future. His assets, accumulated through hard work and strategic planning, provide him with a solid base to support his long-term objectives. His early start in professional studies and entrepreneurship reflects his proactive approach to securing a successful future. By continuously seeking opportunities for growth and development, Muhammad Huraiz ensures that his business remains competitive and innovative.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz, born in 2005 in Pakistan, is not only a student but also an entrepreneur with a vision. He has invested in various assets that are expected to play a crucial role in his future endeavors. His drive to build and manage assets underscores his commitment to creating a prosperous future while pursuing his academic and professional goals. Muhammad Huraiz's strategic investments in technology and emerging markets demonstrate his keen understanding of global trends and his ability to anticipate future needs.
+    </p>
+    <p id="description123">
+        Outside of his academic and business commitments, Muhammad Huraiz is passionate about community service and giving back to society. He actively participates in local initiatives aimed at improving education and entrepreneurship opportunities for young people. His involvement in these activities showcases his dedication to making a positive impact on his community and his belief in the importance of social responsibility.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz's journey is marked by a continuous quest for knowledge and excellence. He is always looking for new ways to enhance his skills and expand his horizons. Whether through attending workshops, networking with industry professionals, or exploring innovative business ideas, Muhammad Huraiz remains committed to his personal and professional growth. His story is a testament to the power of determination, hard work, and a forward-thinking mindset.
+    </p>
+    <p id="description123">
+        In addition to his academic and entrepreneurial pursuits, Muhammad Huraiz has a strong interest in technology and innovation. He is particularly fascinated by the potential of artificial intelligence and machine learning to transform industries and solve complex problems. This curiosity drives him to stay updated with the latest advancements in these fields and explore how they can be integrated into his business strategies.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz is also a firm believer in the power of collaboration and teamwork. He frequently collaborates with peers, mentors, and industry experts to gain new insights and perspectives. This collaborative approach not only enhances his learning experience but also helps him build a robust professional network that can support his future endeavors.
+    </p>
+    <p id="description123">
+        Beyond his professional and academic life, Muhammad Huraiz is an advocate for mental and physical well-being. He regularly engages in activities that promote a balanced lifestyle, such as meditation, fitness routines, and outdoor adventures. He believes that maintaining a healthy mind and body is essential for achieving long-term success and personal fulfillment.
+    </p>
+    <p id="description123">
+        Looking ahead, Muhammad Huraiz envisions himself as a leader in the finance and technology sectors. He aspires to leverage his diverse skill set to drive innovation and create value in these industries. His long-term goals include launching his own tech startup, contributing to cutting-edge research, and mentoring the next generation of entrepreneurs and professionals.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz's journey is a shining example of how dedication, passion, and a forward-thinking approach can pave the way for a successful and impactful career. As he continues to pursue his ambitions, there is no doubt that he will make significant contributions to his chosen fields and inspire others to follow in his footsteps.
+    </p>
+    <p id="description123">
+        In summary, Muhammad Huraiz is a multifaceted individual with a strong drive for excellence. His ability to seamlessly integrate his academic pursuits with his entrepreneurial ventures, his commitment to community service, and his passion for continuous learning make him a standout figure in both his personal and professional life. As he navigates his journey, he remains focused on his vision of creating a prosperous and impactful future.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz's leadership skills are evident not only in his business ventures but also in his academic achievements. He often takes on leadership roles in group projects and academic clubs, where he motivates and guides his peers to achieve collective goals. His ability to lead by example and foster a collaborative environment has earned him the respect and admiration of his peers and mentors alike.
+    </p>
+    <p id="description123">
+        In his entrepreneurial journey, Muhammad Huraiz has developed a keen understanding of market dynamics and consumer behavior. He conducts thorough market research to identify emerging trends and opportunities, enabling him to make informed business decisions. His strategic approach to entrepreneurship ensures that his ventures are not only profitable but also sustainable in the long run.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz is also an avid reader and believes in the power of knowledge. He dedicates a significant portion of his time to reading books on various subjects, including finance, technology, psychology, and personal development. This habit of continuous learning allows him to stay ahead of the curve and apply new insights to his personal and professional life.
+    </p>
+    <p id="description123">
+        As a mentor, Muhammad Huraiz takes pride in nurturing young talent and helping them achieve their potential. He conducts workshops and seminars for aspiring entrepreneurs, where he shares his experiences and provides valuable guidance on business planning, financial management, and innovation. His mentorship has helped many young individuals embark on their own entrepreneurial journeys with confidence.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz's commitment to excellence extends to every aspect of his life. He sets high standards for himself and constantly strives to exceed them. His relentless pursuit of excellence, coupled with his ability to adapt to changing circumstances, has been a key factor in his success. He believes that success is a continuous journey, and he is always looking for new ways to challenge himself and grow.
+    </p>
+    <p id="description123">
+        Muhammad Huraiz's passion for technology is not limited to his business ventures. He also enjoys experimenting with new gadgets and software in his free time. Whether it's building a custom PC, exploring the latest software applications, or staying updated with tech news, his enthusiasm for technology is evident. This passion drives him to incorporate the latest technological advancements into his business strategies, ensuring that his ventures remain cutting-edge.
+    </p>
+    <p id="description123">
+        Ultimately, Muhammad Huraiz's goal is to leave a lasting legacy of innovation, integrity, and positive impact. He is dedicated to making a difference in the world through his entrepreneurial ventures, community service, and mentorship. His journey is a testament to the power of determination, vision, and hard work, and he continues to inspire others with his achievements and aspirations.
+    </p>
+    
+    
+        <p id="year123"></p>
+        <script>function updateYear() {
+            const yearElement = document.getElementById('year123');
+            const currentYear = new Date().getFullYear();
+            yearElement.textContent = currentYear;
+        }
+        
+        // Call the function to update the year
+        updateYear();
+        
+        // Optionally, you can call this function periodically (e.g., every year) if needed
+        // setInterval(updateYear, 365 * 24 * 60 * 60 * 1000); // Update once a year
+        </script>
+            </div>
+            </div>
+    <div id="container123">
+        <div id="text-container123">
+            <h2 id="title123" style="color:rgb(255, 255, 255);position: relative; display: inline-block; cursor: pointer;"
+            title="huraiz qualifications overview">QUALIFICATIONS</h2>
+            <hr id="bar" style="
+            border: none;
+            height: 2px; 
+            background-color: rgba(155, 155, 155, 0.619);
+            width: 50%; /* Adjust width as needed */
+            margin-left: 0; /* Align to the left side */
+            margin-right: auto; /* Ensure it does not shift to the right */
+            margin-top: 10px; /* Adjust spacing above if needed */
+            margin-bottom: 10px; /* Adjust spacing below if needed */
+        ">           <p id="description123">
+    Muhammad Huraiz is a dynamic individual with a diverse skill set and a passion for continuous learning and growth. Currently a student of the Institute of Chartered Accountants of Pakistan (ICAP), he is pursuing his Chartered Accountancy qualification, aiming to master the intricacies of finance, audit, and taxation over the next decade. His exceptional communication skills enhance his effectiveness in both personal and professional interactions.
+</p>
+<p id="description123">
+    In addition to his accounting studies, Muhammad Huraiz excels as a programming aficionado, leveraging his technical expertise to develop innovative software solutions. His proficiency extends to graphic design, where he crafts visually appealing and impactful designs. As an SEO expert, he optimizes digital content to improve online visibility and engagement. Moreover, Muhammad Huraiz is a content creator, generating compelling and relevant content across various platforms.
+</p>
+<p id="description123">
+    With a clear vision for his future, Muhammad Huraiz is dedicated to honing his skills and achieving professional milestones, as reflected in his progress towards completing his ICAP qualification within the next 10 years. His multifaceted abilities and dedication make him a valuable asset in any field he chooses to pursue.
+</p>
+<p id="description123">
+    Outside of his professional endeavors, Muhammad Huraiz is deeply involved in community service, participating in initiatives that aim to improve education and entrepreneurship opportunities for young people. His commitment to social responsibility is evident through his active participation in local projects and events. Muhammad Huraiz also mentors aspiring entrepreneurs, sharing his knowledge and experiences to help them navigate the challenges of starting and growing a business.
+</p>
+<p id="description123">
+    Muhammad Huraiz's journey is characterized by a relentless pursuit of knowledge and excellence. He continuously seeks new opportunities to expand his skill set and stay ahead of industry trends. Whether through attending workshops, networking with professionals, or exploring innovative business ideas, Muhammad Huraiz remains focused on his personal and professional growth. His story is a testament to the power of determination, hard work, and a forward-thinking mindset.
+</p>
+<p id="description123">
+    In his personal time, Muhammad Huraiz enjoys exploring the latest advancements in technology and how they can be applied to solve real-world problems. He is particularly interested in artificial intelligence and machine learning, areas that he believes hold immense potential for future innovation. His curiosity and eagerness to learn about these cutting-edge technologies keep him motivated and inspired.
+</p>
+<p id="description123">
+    Muhammad Huraiz's ability to balance his rigorous academic schedule with his business ventures and community service activities speaks to his exceptional time management and organizational skills. His dedication to personal development is further exemplified by his commitment to physical fitness and mental well-being. He believes that a healthy mind and body are crucial for achieving long-term success.
+</p>
+<p id="description123">
+    Looking ahead, Muhammad Huraiz envisions himself playing a pivotal role in the finance and technology sectors. He aspires to lead innovative projects that drive positive change and create value for society. His ultimate goal is to establish a legacy of excellence and impact, inspiring others to pursue their passions and make meaningful contributions to the world.
+</p>
+<p id="description123">
+    Muhammad Huraiz's impressive journey thus far is a reflection of his unwavering determination and a clear vision for the future. As he continues to evolve and grow, there is no doubt that he will achieve great success and leave a lasting impact in his chosen fields.
+</p>
+<p id="description123">
+    Muhammad Huraiz is also passionate about writing and storytelling. He often spends his free time writing articles, blog posts, and even short stories. His ability to convey complex ideas in an engaging and accessible manner has earned him a loyal readership. Through his writing, he aims to educate, inspire, and entertain his audience, making a positive impact through the power of words.
+</p>
+<p id="description123">
+    Additionally, Muhammad Huraiz is an avid traveler. He believes that traveling provides invaluable learning experiences and broadens one's perspective. His journeys have taken him to various parts of the world, where he has immersed himself in different cultures and traditions. These experiences have not only enriched his personal life but have also influenced his professional outlook, teaching him the importance of adaptability and cultural awareness in today's globalized world.
+</p>
+<p id="description123">
+    Muhammad Huraiz's commitment to lifelong learning is evident in his continuous pursuit of new skills and knowledge. He regularly attends industry conferences, seminars, and online courses to stay updated with the latest trends and advancements in his fields of interest. His proactive approach to professional development ensures that he remains at the forefront of industry innovation and best practices.
+</p>
+<p id="description123">
+    Ultimately, Muhammad Huraiz aims to leverage his diverse skill set, extensive knowledge, and unwavering determination to make a significant impact in the world. Whether it's through his contributions to the finance and technology sectors, his community service efforts, or his creative endeavors, he strives to create a legacy of excellence, integrity, and positive change.
+</p>
+
+                <p id="time123"></p>
+
+                <script>
+                    function updateTime() {
+                        const now = new Date();
+                        let hours = now.getHours();
+                        let minutes = now.getMinutes();
+                        let seconds = now.getSeconds();
+                        const ampm = hours >= 12 ? 'PM' : 'AM';
+            
+                        // Convert 24-hour format to 12-hour format
+                        hours = hours % 12;
+                        hours = hours ? hours : 12; // the hour '0' should be '12'
+            
+                        // Add leading zeros to minutes and seconds
+                        minutes = minutes < 10 ? '0' + minutes : minutes;
+                        seconds = seconds < 10 ? '0' + seconds : seconds;
+            
+                        // Construct time string
+                        const timeString = `${hours}:${minutes}:${seconds} ${ampm}`;
+            
+                        // Update the content of the <p> element
+                        document.getElementById('time123').innerText = timeString;
+                    }
+            
+                    // Update time every second
+                    setInterval(updateTime, 1000);
+            
+                    // Initialize time on page load
+                    window.onload = updateTime;
+                </script>
+
+                <p id="date123"></p>
+            <p id="description123">"This progress bar displays the remaining duration to complete Muhammad Huraiz's professional qualification."</p>
+
+                </div>
+                <br>
+                <center>
+                <div class="progress">
+                    <div class="progress-value"></div>
+                  </div>
+                  </center>
+
+      </div>
+      <!-- <button class="button12000" onclick="showRegister()" style="
+            color: rgba(255, 255, 255, 0);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: rgba(255, 0, 0, 0); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Blur effect */
+            background-size: 200% 200%;
+            animation: gradientAnimation 3s ease infinite;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        ">
+          <img src="https://cdn-icons-png.flaticon.com/128/281/281764.png" alt="icon" class="button-icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+REGISTER
+        </button> -->
+      <!-- <div class="container1234"style="width:800px;max-width:99%;">
+        <textarea id="note" placeholder="click here to Leave a note to muhammadhuraiz"></textarea>
+        <button class="button1234" onclick="sendMessage()" style="
+        color: rgba(255, 255, 255, 0.778);
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.3); /* Semi-transparent white */
+        backdrop-filter: blur(10px); /* Blur effect */
+        background-size: 200% 200%;
+        animation: gradientAnimation 3s ease infinite;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    ">Submit</button>
+    </div> -->
+    <!-- <br> -->
+    <!-- <audio id="audio-element-9r985458t4983" controls>
+        <source src="https://github.com/gigogia/Fixhuraiz/raw/main/dreamy-mood-130844.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio> -->
+    <!-- <div id="container6345878" class="container6345878">
+        <center><h2>TEXT INTO VOICE</h2></center>
+        <p id="description123">write text in input to convert in to speech , live text conversion.
+        </p>
+        <textarea id="textInput6345878" class="text-area-css6345878" placeholder="Enter your text here..."></textarea>
+        <button id="speakButton6345878" class="button-css6345878" style="background-color:rgba(255, 255, 255, 0.3);">Speak Text</button>
+    </div> -->
+<!-- <br>
+<br> -->
+<!-- <script>
+    // Function to detect language from text using a simple approach
+    function detectLanguage(text) {
+        // Example language detection logic (you might need a more robust solution for production)
+        if (text.match(/[\u0600-\u06FF]/)) return 'ar-SA'; // Arabic
+        if (text.match(/[\u00C0-\u017F]/)) return 'fr-FR'; // French
+        if (text.match(/[\u0100-\u017F]/)) return 'de-DE'; // German
+        if (text.match(/[\u0000-\u007F]/)) return 'en-US'; // English
+        // Add more language detection as needed
+        return 'en-US'; // Default to English if language not detected
+    }
+
+    function setVoice(utterance, language) {
+        const voices = window.speechSynthesis.getVoices();
+        const preferredVoice = voices.find(voice => voice.lang === language);
+        if (preferredVoice) {
+            utterance.voice = preferredVoice;
+        } else {
+            console.warn(`No voice found for language: ${language}`);
+        }
+    }
+
+    document.getElementById('speakButton6345878').addEventListener('click', function() {
+        const text = document.getElementById('textInput6345878').value;
+        const languageCode = detectLanguage(text);
+        const utterance = new SpeechSynthesisUtterance(text);
+
+        utterance.pitch = 0.8; // Adjust pitch for a professional tone
+        utterance.rate = 1;    // Adjust rate for a natural speed
+        utterance.volume = 1;  // Set volume to maximum for loudness
+
+        // Set voice based on detected language
+        setVoice(utterance, languageCode);
+
+        window.speechSynthesis.speak(utterance);
+    });
+
+    // Wait for the voices to be loaded before setting the preferred voice
+    window.speechSynthesis.onvoiceschanged = () => {
+        const utterance = new SpeechSynthesisUtterance();
+        const text = document.getElementById('textInput6345878').value;
+        const languageCode = detectLanguage(text);
+        setVoice(utterance, languageCode);
+    };
+
+    // Add CSS for the container, text area, and button
+    const style = document.createElement('style');
+    style.innerHTML = `
+        #container6345878 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            width: 600px;
+            max-width: 99%;
+            margin: 0 auto;
+        }
+        .text-area-css6345878 {
+            width: 100%;
+            height: 150px;
+            margin-bottom: 20px;
+            border: 1px solid #ffffff00;
+            border-radius: 5px;
+            font-size: 16px;
+            resize: none;
+            background-color: #ffffff35;
+            color: white;
+        }
+        .button-css6345878 {
+            width: 100%;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button-css6345878:hover {
+            background-color: #0056b3;
+        }
+    `;
+    document.head.appendChild(style);
+</script> -->
+<center> <audio id="audio-element-9r985458t4983" controls>
+        <source src="https://github.com/gigogia/Fixhuraiz/raw/main/ttsmaker-file-2024-7-30-17-20-39siteeeeeeeeeeeeeeeeeeeeeeee.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+</center>
+<br>
+      <script>
+        function updateProgress() {
+            const progressBar = document.querySelector('.progress-value');
+            const startDate = new Date(); // Current date
+            const endDate = new Date(startDate.getFullYear() + 10, startDate.getMonth(), startDate.getDate()); // 10 years from now
+            
+            // Initial completion percentage
+            const initialCompletion = 15;
+            
+            // Calculate the total time span
+            const totalTime = endDate - startDate;
+            
+            // Calculate the time passed since the start date
+            const timePassed = new Date() - startDate;
+            
+            // Calculate the percentage completion
+            const percentageCompletion = Math.min(initialCompletion + ((timePassed / totalTime) * (100 - initialCompletion)), 100);
+            
+            // Update the width of the progress value
+            progressBar.style.width = percentageCompletion + '%';
+        }
+    
+        // Update the progress bar on page load
+        updateProgress();
+    
+        // Optionally, update the progress bar periodically (e.g., every minute)
+        setInterval(updateProgress, 60000); // Update every 60 seconds
+    </script>
+    
+      <script>
+         
+      </script>
+     <script>
+       // Function to format date as "Month Date, Year"
+function formatDate(date) {
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    return date.toLocaleDateString(undefined, options);
+}
+
+// Function to update the date in the <p> element
+function updateDate() {
+    const dateElement = document.getElementById('date123');
+    const currentDate = new Date();
+    dateElement.textContent = formatDate(currentDate);
+}
+
+// Update the date immediately and then every day at midnight
+updateDate();
+setInterval(() => {
+    const now = new Date();
+    const nextMidnight = new Date();
+    nextMidnight.setHours(24, 0, 0, 0);
+    const timeToMidnight = nextMidnight - now;
+    setTimeout(updateDate, timeToMidnight);
+}, 24 * 60 * 60 * 1000); // Check every 24 hours
+
+    </script>
+    
+    <script>
+        function sendMessage() {
+            var note = document.getElementById('note').value;
+            var message = encodeURIComponent(note);
+            var phoneNumber = '+923170335072';
+            var whatsappURL = `https://wa.me/${phoneNumber}?text=${message}\n\n........site:https://muhammadhuraiz.odoo.com`;
+            window.location.href = whatsappURL;
+        }
+    </script>
+    
+    </div>
+    </div>
+
+    
+        
+    <div id="loading-page" class="loading-page">
+        <div class="loading-indicator">Wait a moment <br><br> you are connecting to Muhammad Huraiz...</div>
+        <div class="countdown" id="countdown">Connecting: 0%</div>
+    </div>
+
+    <script>
+        const synth = window.speechSynthesis;
+        
+        function speak(text) {
+    if (synth.speaking) {
+        console.error('Speech synthesis already in progress');
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    // Customize to your preferred male voice
+    utterance.voice = synth.getVoices().find(voice => voice.name === 'Google UK English Male'); 
+    utterance.pitch = 0.8; // Adjust pitch for a professional tone
+    utterance.rate = 1;    // Adjust rate for a natural speed
+    utterance.volume = 1;  // Set volume to maximum for loudness
+    synth.speak(utterance);
+}
+
+
+function startmeeting() {
+    document.getElementById('loading-page').style.display = 'flex';
+    speak('Wait a moment, you are connecting to Muhammad Huraiz...');
+    
+    let countdownElem = document.getElementById('countdown');
+    let startTime = Date.now();
+    let interval = setInterval(() => {
+        let elapsed = Date.now() - startTime;
+        let percentage = Math.min(Math.floor((elapsed / 8000) * 100), 100); // Assume 8 seconds for connection
+        countdownElem.innerText = `Connecting: ${percentage}%`;
+        
+        if (percentage >= 100) {
+            clearInterval(interval);
+            document.getElementById('loading-page').style.display = 'none';
+            
+            // Show alert before redirecting with additional content
+            let userResponse = confirm(`Dear user,
+
+You are about to be redirected to the booking page for Muhammad Huraiz.
+
+Please ensure you have your details ready for the booking process. This page will allow you to schedule a meeting at your convenience.
+
+If you encounter any issues or need assistance with the booking, please reach out to our support team. 
+
+Click "OK" to proceed or "Cancel" to stay on the current page.
+
+Thank you for your patience.`);
+            
+            // Redirect to the Calendly link if user clicks "OK"
+            if (userResponse) {
+                window.location.href = 'https://calendly.com/huraizart123/muhammadhuraiz';
+            }
+        }
+    }, 100); // Update every 100ms
+}
+
+function startgoogle() {
+    document.getElementById('loading-page').style.display = 'flex';
+    speak('Wait a moment, you are connecting to Muhammad Huraiz...');
+    
+    let countdownElem = document.getElementById('countdown');
+    let startTime = Date.now();
+    let interval = setInterval(() => {
+        let elapsed = Date.now() - startTime;
+        let percentage = Math.min(Math.floor((elapsed / 8000) * 100), 100); // Assume 8 seconds for connection
+        countdownElem.innerText = `Connecting: ${percentage}%`;
+        
+        if (percentage >= 100) {
+            clearInterval(interval);
+            document.getElementById('loading-page').style.display = 'none';
+            
+            // Show alert before redirecting with additional content
+            let userResponse = confirm(`Dear user,
+
+You are about to be connected to Muhammad Huraiz via Google Meets.
+
+Please make sure your microphone and camera are working properly before the meeting starts.
+
+If you encounter any issues or need assistance, please contact our support team.
+
+Click "OK" to proceed or "Cancel" to stay on the current page.
+
+Thank you for your patience.`);
+            
+            // Redirect to the Google Meets link if user clicks "OK"
+            if (userResponse) {
+                window.location.href = 'https://calendly.com/huraizart123/google-meets';
+            }
+        }
+    }, 100); // Update every 100ms
+}
+
+
+function startforms() {
+    document.getElementById('loading-page').style.display = 'flex';
+    speak('Wait a moment, you are connecting to Muhammad Huraiz...');
+    
+    let countdownElem = document.getElementById('countdown');
+    let startTime = Date.now();
+    let interval = setInterval(() => {
+        let elapsed = Date.now() - startTime;
+        let percentage = Math.min(Math.floor((elapsed / 8000) * 100), 100); // Assume 8 seconds for connection
+        countdownElem.innerText = `Connecting: ${percentage}%`;
+        
+        if (percentage >= 100) {
+            clearInterval(interval);
+            document.getElementById('loading-page').style.display = 'none';
+            
+            // Show alert before redirecting with additional content
+            let userResponse = confirm(`Dear user,
+
+You are about to be redirected to a request page powered by Google Forms.
+
+Please ensure all your details are correct before submitting the form. 
+
+Your submission helps us improve our services, and we appreciate your time.
+
+If you encounter any issues or have questions, please contact our support team.
+
+Click "OK" to proceed or "Cancel" to stay on the current page.
+
+Thank you for your patience.`);
+            
+            // Redirect to the Google Forms link if user clicks "OK"
+            if (userResponse) {
+                window.location.href = 'https://docs.google.com/forms/d/e/1FAIpQLScz2VMB01SaSYq8ElGQlMYi0GTBKj6-4UFLk3kNs-KeJfcy0w/viewform';
+            }
+        }
+    }, 100); // Update every 100ms
+}
+
+
+function startcalls() {
+    // Display the loading page
+    document.getElementById('loading-page').style.display = 'flex';
+    
+    // Speak a message
+    speak('Wait a moment, you are connecting to Muhammad Huraiz...');
+    
+    let countdownElem = document.getElementById('countdown');
+    let startTime = Date.now();
+    let interval = setInterval(() => {
+        let elapsed = Date.now() - startTime;
+        let percentage = Math.min(Math.floor((elapsed / 8000) * 100), 100); // Assume 8 seconds for connection
+        countdownElem.innerText = `Connecting: ${percentage}%`;
+        
+        if (percentage >= 100) {
+            clearInterval(interval);
+            document.getElementById('loading-page').style.display = 'none';
+            
+            // Show alert before redirecting with additional content
+            let userResponse = confirm(`Dear user,
+
+You are about to be redirected to book a phone call with Muhammad Huraiz.
+
+Please ensure you have your details ready for the booking process. This page will allow you to schedule a call with muhammadd huraiz.
+
+If you encounter any issues or need assistance with the booking, please reach out to our support team. 
+
+Click "OK" to proceed or "Cancel" to stay on the current page.
+
+Thank you for your patience.`);
+            
+            // Open the phone dialer if user clicks "OK"
+            if (userResponse) {
+                window.location.href = 'https://calendly.com/huraizart123/muhammad-huraiz-book-phone-call';
+            }
+        }
+    }, 100); // Update every 100ms
+}
+
+
+
+
+
+function startMessage() {
+    document.getElementById('loading-page').style.display = 'flex';
+    speak('Wait a moment, you are connecting to Muhammad Huraiz...');
+    
+    let countdownElem = document.getElementById('countdown');
+    let startTime = Date.now();
+    let interval = setInterval(() => {
+        let elapsed = Date.now() - startTime;
+        let percentage = Math.min(Math.floor((elapsed / 8000) * 100), 100); // Assume 8 seconds for connection
+        countdownElem.innerText = `Connecting: ${percentage}%`;
+        
+        if (percentage >= 100) {
+            clearInterval(interval);
+            document.getElementById('loading-page').style.display = 'none';
+            
+            // Show alert before redirecting with additional content
+            let userResponse = confirm(`Dear user,
+
+You are about to be redirected to compose an SMS message to Muhammad Huraiz.
+
+Please review the message carefully before sending it. You can adjust the content to better fit your specific topic or purpose. Your feedback or request is important and will be addressed promptly.
+
+If you have any questions or require further assistance, do not hesitate to contact our support team.
+
+Click "OK" to proceed or "Cancel" to stay on the current page.
+
+Thank you for your patience. You will be redirected shortly to compose the message.`);
+            
+            // Prepare SMS message
+            if (userResponse) {
+                const phoneNumber = '+923170335072';
+                const message = encodeURIComponent('I was redirected here from your website and would like to initiate a call to discuss [specific topic or purpose]. Please let me know a convenient time for you, or if there are any additional details I should be aware of before our conversation.\n\nLooking forward to your response.\n\nBest regards,');
+                
+                // Redirect to SMS
+                window.location.href = `sms:${phoneNumber}?body=${message}`;
+            }
+        }
+    }, 100); // Update every 100ms
+}
+
+function startbox() {
+    // Show the loading page
+    document.getElementById('loading-page').style.display = 'flex';
+    
+    // Announce connection
+    speak('Wait a moment, you are connecting to Muhammad Huraiz...');
+    
+    // Countdown progress element
+    let countdownElem = document.getElementById('countdown');
+    
+    // Start time for countdown
+    let startTime = Date.now();
+    
+    // Interval to update countdown percentage
+    let interval = setInterval(() => {
+        // Calculate elapsed time and percentage
+        let elapsed = Date.now() - startTime;
+        let percentage = Math.min(Math.floor((elapsed / 9100) * 100), 100); // Assume 9.1 seconds for connection
+        
+        // Update countdown text
+        countdownElem.innerText = `Connecting: ${percentage}%`;
+
+        // Check if connection is complete
+        if (percentage >= 100) {
+            clearInterval(interval);
+            document.getElementById('loading-page').style.display = 'none';
+            
+            // Alert message before redirecting with additional content
+            let userResponse = confirm(`Dear user,
+
+You are about to be redirected to WhatsApp to send a pre-filled message to Muhammad Huraiz.
+
+Please ensure that your message is appropriate and complete. Avoid changing the script, as unauthorized modifications may result in restricted access.
+
+If you need to include specific details or have any questions, make sure to add them before sending the message. Your cooperation is appreciated.
+
+Click "OK" to proceed or "Cancel" to stay on the current page.
+
+Thank you for your patience.`);
+            
+            // Redirect to WhatsApp with pre-filled message if user clicks "OK"
+            if (userResponse) {
+                const message = 'I was redirected here from your website and would like to initiate a call to discuss [specific topic or purpose]. Please let me know a convenient time for you, or if there are any additional details I should be aware of before our conversation.\n\nLooking forward to your response.\n\nBest regards, https://muhammadhuraiz.odoo.com';
+                const phoneNumber = '923170335072'; // Use international format without '+'
+                const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+                window.location.href = url;
+            }
+        }
+    }, 100); // Update every 100ms
+}
+    </script>
+   <script>
+    // Disable right-click context menu
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    // Disable copy, cut, and paste actions
+    document.addEventListener('keydown', function(e) {
+        // Disable Ctrl+C (Copy), Ctrl+X (Cut), Ctrl+V (Paste), and Ctrl+A (Select All)
+        if (e.ctrlKey && (e.key === 'c' || e.key === 'x' || e.key === 'v' || e.key === 'a')) {
+            e.preventDefault();
+        }
+    });
+
+    // Disable text selection
+    document.body.style.userSelect = 'none'; // Prevents text selection via CSS
+
+    // Optionally, add a style to prevent text highlighting
+    const style = document.createElement('style');
+    style.innerHTML = `
+        /* Disable text selection */
+        body {
+            user-select: none;
+            -webkit-user-select: none; /* Chrome, Safari, and Opera */
+            -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+        }
+        
+        /* Disable cursor when selecting text */
+        ::selection {
+            background: transparent;
+        }
+    `;
+    document.head.appendChild(style);
+</script>
+
+   <script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Create the loading container
+    const loadingContainer = document.createElement('div');
+    loadingContainer.style.position = 'fixed';
+    loadingContainer.style.top = '0';
+    loadingContainer.style.left = '0';
+    loadingContainer.style.width = '100vw';
+    loadingContainer.style.height = '100vh';
+    loadingContainer.style.backgroundColor = 'black';
+    loadingContainer.style.display = 'flex';
+    loadingContainer.style.justifyContent = 'center';
+    loadingContainer.style.alignItems = 'center';
+    loadingContainer.style.zIndex = '9999';
+
+    // Create the loading spinner
+    const spinner = document.createElement('div');
+    spinner.style.border = '2px solid rgba(255, 255, 255, 0.1)';
+    spinner.style.borderLeft = '2px solid white';
+    spinner.style.borderRadius = '50%';
+    spinner.style.width = '30px';
+    spinner.style.height = '30px';
+    spinner.style.animation = 'spin 1s linear infinite';
+
+    // Append the spinner to the loading container
+    loadingContainer.appendChild(spinner);
+
+    // Append the loading container to the body
+    document.body.appendChild(loadingContainer);
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #loading-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            z-index: 10000;
+            transition: width 2s ease-in-out;
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Create the loading bar
+    const loadingBar = document.createElement('div');
+    loadingBar.id = 'loading-bar';
+    document.body.appendChild(loadingBar);
+
+    // Simulate page load progress
+    setTimeout(function() {
+        loadingBar.style.width = '100%';
+    }, 1000);
+
+    // After 3 seconds, remove the loading screen and display the second page
+    setTimeout(() => {
+        loadingContainer.style.display = 'none';
+        loadingBar.style.display = 'none';
+
+        // Create the final screen
+        const finalScreen = document.createElement('div');
+        finalScreen.style.position = 'fixed';
+        finalScreen.style.top = '0';
+        finalScreen.style.left = '0';
+        finalScreen.style.width = '100vw';
+        finalScreen.style.height = '100vh';
+        finalScreen.style.backgroundColor = 'black';
+        finalScreen.style.display = 'flex';
+        finalScreen.style.flexDirection = 'column';
+        finalScreen.style.justifyContent = 'center';
+        finalScreen.style.alignItems = 'center';
+        finalScreen.style.zIndex = '10000';
+
+       // Create the icon element
+       const icon = document.createElement('img');
+        icon.src = 'https://i.postimg.cc/prZhbTgB/Whats-App-Image-2024-07-26-at-21-00-11-e9f8fbf9.jpg'; // Yaha apna icon ka link paste karein
+        icon.style.width = '45px'; // Icon ki width set karein
+        icon.style.height = '45px'; // Icon ki height set karein
+
+        // Create the disclaimer element
+        const disclaimer = document.createElement('div');
+        disclaimer.textContent = 'please wait a moment...';
+        disclaimer.style.color = 'white';
+        disclaimer.style.fontSize = '10px';
+        disclaimer.style.textAlign = 'center';
+        disclaimer.style.marginTop = '20px';
+        disclaimer.style.padding = '0 34px';
+
+        // Append icon and disclaimer to the final screen
+        finalScreen.appendChild(icon);
+        finalScreen.appendChild(disclaimer);
+
+        // Append the final screen to the body
+        document.body.appendChild(finalScreen);
+
+        // Hide the final screen after 6 seconds
+        setTimeout(() => {
+            finalScreen.style.display = 'none';
+        }, 7000);
+    }, 4000);
+});
+
+   </script>
+    <script>
+        function startVerification() {
+            // Add CSS styles dynamically
+            const style = document.createElement('style');
+            style.textContent = `
+                /* Basic Reset */
+                body, html {
+                    margin: 0;
+                    padding: 0;
+                    height: 100%;
+                    overflow: hidden;
+                }
+                /* Styles for CAPTCHA Container */
+                #captcha-container {
+                    text-align: center;
+                    border:none;
+                    padding: 20px;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    font-family: Arial, sans-serif;
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background-color: rgba(255, 255, 255, 0.305); /* Semi-transparent white */
+                    backdrop-filter: blur(10px); /* Blur effect */
+                    z-index: 10000;
+                    width: 90%;
+                    max-width: 400px;
+                    box-sizing: border-box;
+                }
+                #captcha-heading {
+                    margin-bottom: 15px;
+                    font-size: 1.5rem;
+                    color: white;
+                }
+                #captcha-canvas {
+                    margin-bottom: 15px;
+                    background-color: none; /* Semi-transparent white */
+                }
+                #captcha-input {
+                    padding: 10px;
+                    font-size: 1rem;
+                    margin-bottom: 15px;
+                    border: none;
+                    border-radius: 5px;
+                    width: calc(100% - 22px); /* Adjust for padding and border */
+                    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+                    backdrop-filter: blur(10px); /* Blur effect */
+                }
+                #captcha-verify-btn {
+                    padding: 8px 20px;
+                    font-size: 1rem;
+                    cursor: pointer;
+    border:1px solid rgba(0, 0, 0, 0);
+                    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+                    backdrop-filter: blur(10px); /* Blur effect */
+                    color: white;
+                    border-radius: 2px;
+                    width: 100%;
+                    color:black;
+                }
+                #captcha-reload-btn {
+                    padding: 8px 20px;
+                    font-size: 1rem;
+                    cursor: pointer;
+    border:1px solid rgba(0, 0, 0, 0);
+                    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+                    backdrop-filter: blur(10px); /* Blur effect */                   
+                     color:black;
+                    border-radius: 2px;
+                    width: 100%;
+                    margin-top: 10px;
+                }
+                #captcha-close-btn {
+                    margin-top: 10px;
+                    padding: 5px 20px;
+                    font-size: 1rem;
+                    cursor: pointer;
+    border:1px solid rgba(0, 0, 0, 0);
+                    background-color: rgba(255, 255, 255, 0); /* Semi-transparent white */
+                    backdrop-filter: blur(10px); /* Blur effect */                    
+                    color: black;
+                    border-radius: 3px;
+                    width: 100%;
+                }
+                #captcha-result {
+                    margin-top: 10px;
+                    font-size: 1rem;
+                }
+                /* Styles for Popup Overlay */
+                #popup-overlay {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100vw;
+                    height: 100vh;
+                    background-color: black;
+                    color: white;
+                    text-align: center;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 9999;
+                    overflow: hidden;
+                    display: flex;
+                    flex-direction: column;
+                    font-family: Arial, sans-serif;
+                }
+                #popup-text {
+                    font-size: 3rem;
+                    margin: 0;
+                    position: relative;
+                }
+                @media (max-width: 600px) {
+                    #popup-text {
+                        font-size: 2rem;
+                    }
+                }
+                .star {
+                    position: absolute;
+                    border-radius: 50%;
+                    background-color: blue;
+                    animation: sparkle 1.5s infinite;
+                    opacity: 0.8;
+                }
+                @keyframes sparkle {
+                    0% { transform: scale(1); opacity: 0.8; }
+                    50% { transform: scale(1.5); opacity: 0.5; }
+                    100% { transform: scale(1); opacity: 0.8; }
+                }
+            `;
+            document.head.appendChild(style);
+    
+            // Create and style the CAPTCHA container
+            const container = document.createElement('div');
+            container.id = 'captcha-container';
+    
+            // Create and style the heading
+            const heading = document.createElement('h2');
+            heading.id = 'captcha-heading';
+            heading.textContent = 'VERIFY';
+            container.appendChild(heading);
+    
+            // Create and style the captcha canvas
+            const canvas = document.createElement('canvas');
+            canvas.id = 'captcha-canvas';
+            canvas.width = 300;
+            canvas.height = 100;
+            container.appendChild(canvas);
+    
+            // Create and style the input field
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.id = 'captcha-input';
+            input.placeholder = 'Enter CAPTCHA';
+            container.appendChild(input);
+    
+            // Create and style the verify button
+            const verifyButton = document.createElement('button');
+            verifyButton.id = 'captcha-verify-btn';
+            verifyButton.textContent = 'Verify';
+            verifyButton.addEventListener('click', verifyCaptcha);
+            container.appendChild(verifyButton);
+    
+            // Create and style the reload button
+            const reloadButton = document.createElement('button');
+            reloadButton.id = 'captcha-reload-btn';
+            reloadButton.textContent = 'Reload Page';
+            reloadButton.addEventListener('click', () => {
+                if (confirm('Do you want to reload the page?')) {
+                    location.reload();
+                }
+            });
+            container.appendChild(reloadButton);
+    
+            // Create and style the close button
+            const closeButton = document.createElement('button');
+            closeButton.id = 'captcha-close-btn';
+            closeButton.textContent = 'Close';
+            closeButton.addEventListener('click', () => {
+                document.getElementById('captcha-container').style.display = 'none';
+            });
+            container.appendChild(closeButton);
+    
+            // Create and style the result paragraph
+            const result = document.createElement('p');
+            result.id = 'captcha-result';
+            container.appendChild(result);
+    
+            // Append the container to the body
+            document.body.appendChild(container);
+    
+            // Generate CAPTCHA
+            generateCaptcha();
+    
+            function generateCaptcha() {
+                const canvas = document.getElementById('captcha-canvas');
+                const ctx = canvas.getContext('2d');
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                const captchaLength = 6;
+                let captcha = '';
+    
+                // Clear the canvas
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+                // Draw random lines on the canvas as noise
+                for (let i = 0; i < 20; i++) {
+                    ctx.strokeStyle = getRandomColor();
+                    ctx.lineWidth = Math.random() * 2;
+                    ctx.beginPath();
+                    ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                    ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+                    ctx.stroke();
+                }
+    
+                // Draw the CAPTCHA text with distortions
+                for (let i = 0; i < captchaLength; i++) {
+                    const char = characters.charAt(Math.floor(Math.random() * characters.length));
+                    captcha += char;
+                    ctx.fillStyle = getRandomColor();
+                    ctx.save();
+                    ctx.translate(40 + i * 40, 50 + Math.random() * 20 - 10);
+                    ctx.rotate((Math.random() - 0.5) * 0.6);
+                    ctx.font = `${30 + Math.random() * 20}px ${getRandomFont()}`;
+                    ctx.fillText(char, 0, 0);
+                    ctx.restore();
+                }
+    
+                // Store the CAPTCHA text in the container as a data attribute
+                canvas.setAttribute('data-captcha', captcha);
+    
+                // Draw random dots and arcs on the canvas as noise
+                for (let i = 0; i < 100; i++) {
+                    ctx.fillStyle = getRandomColor();
+                    ctx.beginPath();
+                    ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 3, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+            }
+    
+            function verifyCaptcha() {
+                const captchaInput = document.getElementById('captcha-input').value.toUpperCase();
+                const captchaResult = document.getElementById('captcha-result');
+                const captcha = document.getElementById('captcha-canvas').getAttribute('data-captcha');
+    
+                if (captchaInput === captcha) {
+                    captchaResult.textContent = 'CAPTCHA verified successfully!';
+                    captchaResult.style.color = 'green';
+    
+                    // Close CAPTCHA container
+                    document.getElementById('captcha-container').style.display = 'none';
+    
+                    // Show the popup overlay
+                    showPopup();
+    
+                    // Update the button text and disable it
+                    updateButtonAfterVerification();
+    
+                    // Play voice response
+                    playVoiceResponse();
+                } else {
+                    captchaResult.textContent = 'CAPTCHA verification failed. Please try again.';
+                    captchaResult.style.color = 'red';
+                }
+            }
+    
+            function showPopup() {
+                // Create and style the popup overlay
+                const overlay = document.createElement('div');
+                overlay.id = 'popup-overlay';
+    
+                // Create and style the text
+                const popupText = document.createElement('div');
+                popupText.id = 'popup-text';
+                popupText.textContent = 'WELCOME';
+    
+                // Create and add star elements
+                for (let i = 0; i < 50; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.width = `${Math.random() * 10 + 5}px`;
+                    star.style.height = star.style.width;
+                    star.style.top = `${Math.random() * 100}vh`;
+                    star.style.left = `${Math.random() * 100}vw`;
+                    star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                    overlay.appendChild(star);
+                }
+    
+                overlay.appendChild(popupText);
+                document.body.appendChild(overlay);
+    
+                // Show the popup for 2 seconds and then hide it
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 5000);
+            }
+    
+            function updateButtonAfterVerification() {
+                const verifyButton = document.querySelector('.button123456789');
+                if (verifyButton) {
+                    // Change the button text to "Verified" and color to green
+                    verifyButton.innerHTML = '<img src="https://cdn-icons-png.flaticon.com/128/15050/15050690.png" alt="icon" class="button-icon"> Verified';
+                    verifyButton.style.color = 'green';
+                    
+                    // Disable the button
+                    verifyButton.disabled = true;
+                    
+                    // Optionally, change the button color to indicate it's been disabled
+                    verifyButton.style.background = '#6c757d'; // Grey color to indicate disabledload
+                    verifyButton.style.cursor = 'not-allowed'; // Change cursor to indicate non-clickable
+                }
+            }
+    
+            function playVoiceResponse() {
+                const synth = window.speechSynthesis;
+                const utterance = new SpeechSynthesisUtterance('Welcome');
+    
+                // Customize to your preferred male voice
+                utterance.voice = synth.getVoices().find(voice => voice.name === 'Google UK English Male');
+                utterance.pitch = 0.8; // Adjust pitch for a professional tone
+                utterance.rate = 1;    // Adjust rate for a natural speed
+                utterance.volume = 1;  // Set volume to maximum for loudness
+    
+                synth.speak(utterance);
+            }
+    
+            function getRandomColor() {
+                return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`;
+            }
+    
+            function getRandomFont() {
+                const fonts = ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia'];
+                return fonts[Math.floor(Math.random() * fonts.length)];
+            }
+        }
+    </script>
+    <script>
+    let wasOffline = false;
+
+function checkConnection() {
+  if (!navigator.onLine) {
+    alert('Dear user, check your internet connection.');
+    wasOffline = true;
+  } else if (wasOffline) {
+    let userPermission = confirm('Dear user, your internet connection is reestablished now. Would you like to reload the page?');
+    if (userPermission) {
+      location.reload();
+    }
+    wasOffline = false;
+  }
+}
+
+window.addEventListener('online', checkConnection);
+window.addEventListener('offline', checkConnection);
+
+// Initial check
+checkConnection();
+
+      </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1W9X9FWPD0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1W9X9FWPD0');
+</script>
+<script>// Function to disable drag and drop
+    function disableDragAndDrop() {
+        // Prevent drag events
+        document.addEventListener('dragstart', function(e) {
+            e.preventDefault();
+        });
+    
+        // Prevent drop events
+        document.addEventListener('drop', function(e) {
+            e.preventDefault();
+        });
+    
+        // Prevent dragover events (required for drop to be prevented)
+        document.addEventListener('dragover', function(e) {
+            e.preventDefault();
+        });
+    
+        // Prevent dragenter events
+        document.addEventListener('dragenter', function(e) {
+            e.preventDefault();
+        });
+    
+        // Prevent dragleave events
+        document.addEventListener('dragleave', function(e) {
+            e.preventDefault();
+        });
+    }
+    
+    // Call the function to disable drag and drop
+    disableDragAndDrop();
+    </script>
+    <script>
+        (function() {
+    let clickCount = 0;
+    const maxClicks = 6; // Number of clicks in the same spot
+    const timeWindow = 2000; // 2 seconds to count clicks
+    let lastClickTime = 0;
+    let lastClickX = 0;
+    let lastClickY = 0;
+
+    document.addEventListener('click', function(e) {
+        const currentTime = Date.now();
+        const timeDifference = currentTime - lastClickTime;
+        const distance = Math.sqrt((e.clientX - lastClickX) ** 2 + (e.clientY - lastClickY) ** 2);
+
+        // Reset count if time window has passed
+        if (timeDifference > timeWindow) {
+            clickCount = 0;
+        }
+
+        // Update last click position and time
+        lastClickX = e.clientX;
+        lastClickY = e.clientY;
+        lastClickTime = currentTime;
+
+        // Increment click count if within time window and same spot
+        if (distance < 10) { // Adjust distance tolerance as needed
+            clickCount++;
+        } else {
+            clickCount = 1; // Reset if clicked in a different spot
+        }
+
+        // Show warning if max clicks reached
+        if (clickCount > maxClicks) {
+            showWarning('unusual activiy detected');
+            clickCount = 0; // Reset count after showing warning
+        }
+    });
+
+    // Function to show a warning message
+    function showWarning(message) {
+        const warningDiv = document.createElement('div');
+        warningDiv.style.position = 'fixed';
+        warningDiv.style.top = '10px'; // Adjust top margin for visibility
+        warningDiv.style.left = '50%';
+        warningDiv.style.transform = 'translateX(-50%)';
+        warningDiv.style.padding = '5px';
+        warningDiv.style.backgroundColor = 'white';
+        warningDiv.style.color = 'black';
+        warningDiv.style.border = '1px solid white';
+        warningDiv.style.borderRadius = '5px';
+        warningDiv.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+        warningDiv.style.zIndex = '1000';
+        warningDiv.style.textAlign = 'center';
+        warningDiv.style.fontSize = '10px';
+        warningDiv.style.fontFamily = 'Arial, sans-serif';
+        warningDiv.textContent = message;
+
+        document.body.appendChild(warningDiv);
+        setTimeout(() => {
+            warningDiv.remove();
+        }, 5000); // Display for 5 seconds
+    }
+})();
+
+    </script>
+    <script>
+        // Basic Obfuscation Example
+(function() {
+    function obfuscateCode() {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault(); // Disable right-click context menu
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.ctrlKey && (e.key === 'u' || e.key === 'U' || e.key === 'I' || e.key === 'i')) {
+                e.preventDefault(); // Disable Ctrl+U and Ctrl+I (view source / inspect)
+            }
+        });
+    }
+
+    function hideSource() {
+        obfuscateCode();
+        // Example of obfuscating code (Note: This is a simplistic example)
+        var originalScript = 'console.log("This code is obfuscated.");';
+        var obfuscatedScript = 'console["lo" + "g"]("This code is obfuscated.");';
+        eval(obfuscatedScript); // Execute obfuscated code
+    }
+
+    // Run hideSource function after page load
+    window.addEventListener('load', hideSource);
+})();
+
+    </script>
+      <!-- <button class="button123456789" onclick="startVerification()" style="
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #3498db, #00bbff, #3aceff, #3498db);
+    background-size: 200% 200%;
+    animation: gradientAnimation 3s ease infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px); /* Blur effect */
+">
+         <img src="https://cdn-icons-png.flaticon.com/128/15050/15050690.png" alt="icon" class="button-icon"> Verify
+            </button> -->
+</body>
+
+</html>
